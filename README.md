@@ -180,7 +180,7 @@ Running `--step eval` now exports:
 This reflection focuses on concrete, project-specific findings tied to the code, data, and evaluation artifacts in this repository.
 
 What worked (evidence & pointers)
-- Hybrid retrieval (semantic + SQL): experiments reported in the Evaluation outputs show `rag+tool` yields the best accuracy for bilingual benchmarks (88.18%) and English-only runs (91.00%). See `assets/benchmark_summary_hindi_english.csv` and `assets/benchmark_summary_english_only.csv` for the full breakdown.
+- Hybrid retrieval (semantic + SQL): experiments reported in the Evaluation outputs show `rag+tool` yields the best accuracy for bilingual benchmarks (88.18%) and English-only runs (91.00%).
 - Constraint grounding: the deterministic SQL retriever in `src/tool_call.py` reliably enforces strict filters (year, duration, director), reducing hallucinations in constraint-heavy prompts; failure analysis for these cases lives in `assets/failures_*.csv`.
 - Preprocessing impact: changes in `src/preprocess.py` (genre canonicalization, cast normalization, duration parsing) produced measurable ranking improvements during local experiments — re-run `uv run python -m src.main --step preprocess` before rebuilding embeddings.
 - Indexing and reproducibility: FAISS indices are stored in local data (see `local/data/movies.faiss` and `data/movies.faiss`). Index/model alignment is essential: whenever `src/embed.py` changes the embedding model or tokenizer, rebuild the FAISS index and re-run evaluation.
@@ -195,8 +195,6 @@ Actionable next steps (code locations included)
 - Session personalization: add a short session context buffer in `src/agent.py` and a small weight to bias retrievals toward recent user interactions.
 - Index/version metadata: extend `src/embed.py` to write an index metadata JSON (embedding model, timestamp, dataset hash) next to FAISS files and enforce checks in `src/similarity_search.py`.
 - Human evaluation: curate a small set of ambiguous queries from `data/english_test_prompts.json` and `data/hindi_test_prompts.json` for human rating; store results under `assets/` for longitudinal analysis.
-
-If you want, I can implement the index metadata change and add a short script to regenerate indexes with a single command.
 
 ## Notes
 - If dashboard starts in browser directly, use `uv run moviemate`.
