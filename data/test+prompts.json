@@ -1,0 +1,882 @@
+[
+  {
+    "id": 1,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 2,
+    "question": "Good Horror movies with rating above 3.9.",
+    "expected_answer": "Should prioritize Horror movies with rating >= 3.9.",
+    "expected_constraints": {
+      "genre_contains": "Horror",
+      "min_rating": 3.9
+    }
+  },
+  {
+    "id": 3,
+    "question": "Show Action rating >= 5.3 director Peter Facinelli Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 5.3,
+      "director_contains": "Peter Facinelli"
+    }
+  },
+  {
+    "id": 4,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 5,
+    "question": "Good Comedy movies with rating above 6.0.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 6.0.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.0
+    }
+  },
+  {
+    "id": 6,
+    "question": "Show Drama rating >= 7.6 director Otto Preminger Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.6,
+      "director_contains": "Otto Preminger"
+    }
+  },
+  {
+    "id": 7,
+    "question": "Suggest Adventure movies.",
+    "expected_answer": "Should return Adventure movies.",
+    "expected_constraints": {
+      "genre_contains": "Adventure"
+    }
+  },
+  {
+    "id": 8,
+    "question": "Good Comedy movies with rating above 6.7.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 6.7.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.7
+    }
+  },
+  {
+    "id": 9,
+    "question": "Show Drama rating >= 6.5 Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 6.5
+    }
+  },
+  {
+    "id": 10,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 11,
+    "question": "Good Drama movies with rating above 5.7.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 5.7.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 5.7
+    }
+  },
+  {
+    "id": 12,
+    "question": "Show Biography rating >= 6.4 Biography movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Biography",
+      "min_rating": 6.4
+    }
+  },
+  {
+    "id": 13,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 14,
+    "question": "Good Crime movies with rating above 6.2.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 6.2.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 6.2
+    }
+  },
+  {
+    "id": 15,
+    "question": "Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 4.7,
+      "director_contains": "Arlene Sanford"
+    }
+  },
+  {
+    "id": 16,
+    "question": "Suggest Drama movies.",
+    "expected_answer": "Should return Drama movies.",
+    "expected_constraints": {
+      "genre_contains": "Drama"
+    }
+  },
+  {
+    "id": 17,
+    "question": "Good Comedy movies with rating above 1.8.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 1.8.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 1.8
+    }
+  },
+  {
+    "id": 18,
+    "question": "Show Drama rating >= 7.2 Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.2
+    }
+  },
+  {
+    "id": 19,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 20,
+    "question": "Good Comedy movies with rating above 6.1.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 6.1.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.1
+    }
+  },
+  {
+    "id": 21,
+    "question": "Show Adventure rating >= 5.3 director Fawn Veerasunthorn, Chris Buck Adventure movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Adventure",
+      "min_rating": 5.3,
+      "director_contains": "Fawn Veerasunthorn, Chris Buck"
+    }
+  },
+  {
+    "id": 22,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 23,
+    "question": "Good Comedy movies with rating above 5.4.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 5.4.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 5.4
+    }
+  },
+  {
+    "id": 24,
+    "question": "Show Adventure rating >= 7.0 director Dexter Fletcher Adventure movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Adventure",
+      "min_rating": 7.0,
+      "director_contains": "Dexter Fletcher"
+    }
+  },
+  {
+    "id": 25,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 26,
+    "question": "Good Crime movies with rating above 4.7.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 4.7.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 4.7
+    }
+  },
+  {
+    "id": 27,
+    "question": "Show Horror rating >= 4.9 Horror movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Horror",
+      "min_rating": 4.9
+    }
+  },
+  {
+    "id": 28,
+    "question": "Suggest Adventure movies.",
+    "expected_answer": "Should return Adventure movies.",
+    "expected_constraints": {
+      "genre_contains": "Adventure"
+    }
+  },
+  {
+    "id": 29,
+    "question": "Good Horror movies with rating above 5.0.",
+    "expected_answer": "Should prioritize Horror movies with rating >= 5.0.",
+    "expected_constraints": {
+      "genre_contains": "Horror",
+      "min_rating": 5.0
+    }
+  },
+  {
+    "id": 30,
+    "question": "Show Crime rating >= 6.9 director Wim Wenders Crime movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 6.9,
+      "director_contains": "Wim Wenders"
+    }
+  },
+  {
+    "id": 31,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 32,
+    "question": "Good Action movies with rating above 5.2.",
+    "expected_answer": "Should prioritize Action movies with rating >= 5.2.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 5.2
+    }
+  },
+  {
+    "id": 33,
+    "question": "Show Drama rating >= 7.3 Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.3
+    }
+  },
+  {
+    "id": 34,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 35,
+    "question": "Good Comedy movies with rating above 6.3.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 6.3.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.3
+    }
+  },
+  {
+    "id": 36,
+    "question": "Show Action rating >= 6.5 director Dhanush Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 6.5,
+      "director_contains": "Dhanush"
+    }
+  },
+  {
+    "id": 37,
+    "question": "Suggest Horror movies.",
+    "expected_answer": "Should return Horror movies.",
+    "expected_constraints": {
+      "genre_contains": "Horror"
+    }
+  },
+  {
+    "id": 38,
+    "question": "Good Comedy movies with rating above 4.8.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 4.8.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 4.8
+    }
+  },
+  {
+    "id": 39,
+    "question": "Show Action rating >= 6.0 Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 6.0
+    }
+  },
+  {
+    "id": 40,
+    "question": "Suggest Horror movies.",
+    "expected_answer": "Should return Horror movies.",
+    "expected_constraints": {
+      "genre_contains": "Horror"
+    }
+  },
+  {
+    "id": 41,
+    "question": "Good Comedy movies with rating above 6.4.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 6.4.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.4
+    }
+  },
+  {
+    "id": 42,
+    "question": "Show Comedy rating >= 5.6 Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 5.6
+    }
+  },
+  {
+    "id": 43,
+    "question": "Suggest Drama movies.",
+    "expected_answer": "Should return Drama movies.",
+    "expected_constraints": {
+      "genre_contains": "Drama"
+    }
+  },
+  {
+    "id": 44,
+    "question": "Good Drama movies with rating above 6.9.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 6.9.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 6.9
+    }
+  },
+  {
+    "id": 45,
+    "question": "Show Adventure rating >= 6.0 Adventure movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Adventure",
+      "min_rating": 6.0
+    }
+  },
+  {
+    "id": 46,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 47,
+    "question": "Good Drama movies with rating above 6.2.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 6.2.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 6.2
+    }
+  },
+  {
+    "id": 48,
+    "question": "Show Drama rating >= 6.5 director Abbas Kiarostami Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 6.5,
+      "director_contains": "Abbas Kiarostami"
+    }
+  },
+  {
+    "id": 49,
+    "question": "Suggest Drama movies.",
+    "expected_answer": "Should return Drama movies.",
+    "expected_constraints": {
+      "genre_contains": "Drama"
+    }
+  },
+  {
+    "id": 50,
+    "question": "Good Drama movies with rating above 7.8.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 7.8.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.8
+    }
+  },
+  {
+    "id": 51,
+    "question": "Show Drama rating >= 7.3 director John Ford Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.3,
+      "director_contains": "John Ford"
+    }
+  },
+  {
+    "id": 52,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 53,
+    "question": "Good Crime movies with rating above 5.9.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 5.9.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.9
+    }
+  },
+  {
+    "id": 54,
+    "question": "Show Action rating >= 6.1 Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 6.1
+    }
+  },
+  {
+    "id": 55,
+    "question": "Suggest Drama movies.",
+    "expected_answer": "Should return Drama movies.",
+    "expected_constraints": {
+      "genre_contains": "Drama"
+    }
+  },
+  {
+    "id": 56,
+    "question": "Good Crime movies with rating above 5.2.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 5.2.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.2
+    }
+  },
+  {
+    "id": 57,
+    "question": "Show Crime rating >= 7.5 Crime movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 7.5
+    }
+  },
+  {
+    "id": 58,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 59,
+    "question": "Good Comedy movies with rating above 5.5.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 5.5.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 5.5
+    }
+  },
+  {
+    "id": 60,
+    "question": "Show Horror rating >= 5.5 Horror movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Horror",
+      "min_rating": 5.5
+    }
+  },
+  {
+    "id": 61,
+    "question": "Suggest Adventure movies.",
+    "expected_answer": "Should return Adventure movies.",
+    "expected_constraints": {
+      "genre_contains": "Adventure"
+    }
+  },
+  {
+    "id": 62,
+    "question": "Good Biography movies with rating above 8.2.",
+    "expected_answer": "Should prioritize Biography movies with rating >= 8.2.",
+    "expected_constraints": {
+      "genre_contains": "Biography",
+      "min_rating": 8.2
+    }
+  },
+  {
+    "id": 63,
+    "question": "Show Crime rating >= 5.9 director Tom Tykwer Crime movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.9,
+      "director_contains": "Tom Tykwer"
+    }
+  },
+  {
+    "id": 64,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 65,
+    "question": "Good Action movies with rating above 4.7.",
+    "expected_answer": "Should prioritize Action movies with rating >= 4.7.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 4.7
+    }
+  },
+  {
+    "id": 66,
+    "question": "Show Drama rating >= 7.2 director Tom McCarthy Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 7.2,
+      "director_contains": "Tom McCarthy"
+    }
+  },
+  {
+    "id": 67,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 68,
+    "question": "Good Crime movies with rating above 5.5.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 5.5.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.5
+    }
+  },
+  {
+    "id": 69,
+    "question": "Show Crime rating >= 5.4 Crime movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.4
+    }
+  },
+  {
+    "id": 70,
+    "question": "Suggest Adventure movies.",
+    "expected_answer": "Should return Adventure movies.",
+    "expected_constraints": {
+      "genre_contains": "Adventure"
+    }
+  },
+  {
+    "id": 71,
+    "question": "Good Biography movies with rating above 7.7.",
+    "expected_answer": "Should prioritize Biography movies with rating >= 7.7.",
+    "expected_constraints": {
+      "genre_contains": "Biography",
+      "min_rating": 7.7
+    }
+  },
+  {
+    "id": 72,
+    "question": "Show Action rating >= 7.3 Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 7.3
+    }
+  },
+  {
+    "id": 73,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 74,
+    "question": "Good Drama movies with rating above 5.7.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 5.7.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 5.7
+    }
+  },
+  {
+    "id": 75,
+    "question": "Show Comedy rating >= 7.6 Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 7.6
+    }
+  },
+  {
+    "id": 76,
+    "question": "Suggest Adventure movies.",
+    "expected_answer": "Should return Adventure movies.",
+    "expected_constraints": {
+      "genre_contains": "Adventure"
+    }
+  },
+  {
+    "id": 77,
+    "question": "Good Drama movies with rating above 6.2.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 6.2.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 6.2
+    }
+  },
+  {
+    "id": 78,
+    "question": "Show Drama rating >= 4.8 Drama movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 4.8
+    }
+  },
+  {
+    "id": 79,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 80,
+    "question": "Good Crime movies with rating above 5.1.",
+    "expected_answer": "Should prioritize Crime movies with rating >= 5.1.",
+    "expected_constraints": {
+      "genre_contains": "Crime",
+      "min_rating": 5.1
+    }
+  },
+  {
+    "id": 81,
+    "question": "Show Comedy rating >= 5.5 Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 5.5
+    }
+  },
+  {
+    "id": 82,
+    "question": "Suggest Drama movies.",
+    "expected_answer": "Should return Drama movies.",
+    "expected_constraints": {
+      "genre_contains": "Drama"
+    }
+  },
+  {
+    "id": 83,
+    "question": "Good Action movies with rating above 4.4.",
+    "expected_answer": "Should prioritize Action movies with rating >= 4.4.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 4.4
+    }
+  },
+  {
+    "id": 84,
+    "question": "Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.9,
+      "director_contains": "Howard Hawks"
+    }
+  },
+  {
+    "id": 85,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 86,
+    "question": "Good Adventure movies with rating above 7.4.",
+    "expected_answer": "Should prioritize Adventure movies with rating >= 7.4.",
+    "expected_constraints": {
+      "genre_contains": "Adventure",
+      "min_rating": 7.4
+    }
+  },
+  {
+    "id": 87,
+    "question": "Show Action rating >= 6.7 Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 6.7
+    }
+  },
+  {
+    "id": 88,
+    "question": "Suggest Crime movies.",
+    "expected_answer": "Should return Crime movies.",
+    "expected_constraints": {
+      "genre_contains": "Crime"
+    }
+  },
+  {
+    "id": 89,
+    "question": "Good Drama movies with rating above 5.3.",
+    "expected_answer": "Should prioritize Drama movies with rating >= 5.3.",
+    "expected_constraints": {
+      "genre_contains": "Drama",
+      "min_rating": 5.3
+    }
+  },
+  {
+    "id": 90,
+    "question": "Show Comedy rating >= 6.5 Comedy movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 6.5
+    }
+  },
+  {
+    "id": 91,
+    "question": "Suggest Comedy movies.",
+    "expected_answer": "Should return Comedy movies.",
+    "expected_constraints": {
+      "genre_contains": "Comedy"
+    }
+  },
+  {
+    "id": 92,
+    "question": "Good Action movies with rating above 3.3.",
+    "expected_answer": "Should prioritize Action movies with rating >= 3.3.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 3.3
+    }
+  },
+  {
+    "id": 93,
+    "question": "Show Biography rating >= 5.8 director Jon Stewart Biography movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Biography",
+      "min_rating": 5.8,
+      "director_contains": "Jon Stewart"
+    }
+  },
+  {
+    "id": 94,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  },
+  {
+    "id": 95,
+    "question": "Good Comedy movies with rating above 4.9.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 4.9.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 4.9
+    }
+  },
+  {
+    "id": 96,
+    "question": "Show Biography rating >= 6.7 Biography movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Biography",
+      "min_rating": 6.7
+    }
+  },
+  {
+    "id": 97,
+    "question": "Suggest Animation movies.",
+    "expected_answer": "Should return Animation movies.",
+    "expected_constraints": {
+      "genre_contains": "Animation"
+    }
+  },
+  {
+    "id": 98,
+    "question": "Good Comedy movies with rating above 5.4.",
+    "expected_answer": "Should prioritize Comedy movies with rating >= 5.4.",
+    "expected_constraints": {
+      "genre_contains": "Comedy",
+      "min_rating": 5.4
+    }
+  },
+  {
+    "id": 99,
+    "question": "Show Action rating >= 6.5 director Laxman Utekar Action movies.",
+    "expected_answer": "Should return movies matching multiple constraints.",
+    "expected_constraints": {
+      "genre_contains": "Action",
+      "min_rating": 6.5,
+      "director_contains": "Laxman Utekar"
+    }
+  },
+  {
+    "id": 100,
+    "question": "Suggest Action movies.",
+    "expected_answer": "Should return Action movies.",
+    "expected_constraints": {
+      "genre_contains": "Action"
+    }
+  }
+]

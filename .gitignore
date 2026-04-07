@@ -14,4 +14,3 @@ wheels/
 
 .env
 !.env.example
-data
