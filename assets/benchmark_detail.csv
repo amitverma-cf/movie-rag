@@ -1,0 +1,331 @@
+mode,question,expected_answer,latency_ms,rag_hits,tool_hits,merged_hits,passed,precision_at_k,mrr,hallucination_rate,tool_call_accuracy,faithfulness_score,top_title,fail_genre,fail_year,fail_rating,fail_duration,fail_director
+rag,Suggest Action movies.,Should return Action movies.,209.5,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,279.96,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Action rating >= 5.3 director Peter Facinelli Action movies.,Should return movies matching multiple constraints.,351.52,3,0,3,False,0.0,0.0,1.0,0.0,0.0,The Stunt Man,False,False,False,False,True
+rag,Suggest Action movies.,Should return Action movies.,170.96,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Comedy movies with rating above 6.0.,Should prioritize Comedy movies with rating >= 6.0.,287.31,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,The Ridiculous 6,False,False,True,False,False
+rag,Show Drama rating >= 7.6 director Otto Preminger Drama movies.,Should return movies matching multiple constraints.,328.44,3,0,3,True,0.3333,0.5,0.0,0.0,0.6,Where the Sidewalk Ends,False,False,True,False,False
+rag,Suggest Adventure movies.,Should return Adventure movies.,179.92,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag,Good Comedy movies with rating above 6.7.,Should prioritize Comedy movies with rating >= 6.7.,253.02,3,0,3,True,1.0,1.0,0.0,0.0,1.0,As Good as It Gets,False,False,False,False,False
+rag,Show Drama rating >= 6.5 Drama movies.,Should return movies matching multiple constraints.,265.16,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Miracle in Cell No. 7,False,False,False,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,163.45,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,268.46,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Miracle in Cell No. 7,False,False,False,False,False
+rag,Show Biography rating >= 6.4 Biography movies.,Should return movies matching multiple constraints.,283.04,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Sly,False,False,False,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,188.42,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Crime movies with rating above 6.2.,Should prioritize Crime movies with rating >= 6.2.,284.44,3,0,3,True,0.3333,0.3333,0.0,0.0,0.6,Highest 2 Lowest,False,False,True,False,False
+rag,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,330.45,2,0,2,False,0.0,0.0,1.0,0.0,0.0,The King of Comedy,False,False,False,False,True
+rag,Suggest Drama movies.,Should return Drama movies.,161.7,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Dream House,False,False,False,False,False
+rag,Good Comedy movies with rating above 1.8.,Should prioritize Comedy movies with rating >= 1.8.,255.2,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Drama rating >= 7.2 Drama movies.,Should return movies matching multiple constraints.,249.93,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Miracle in Cell No. 7,False,False,False,False,False
+rag,Suggest Action movies.,Should return Action movies.,187.89,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Comedy movies with rating above 6.1.,Should prioritize Comedy movies with rating >= 6.1.,266.59,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,The Ridiculous 6,False,False,True,False,False
+rag,"Show Adventure rating >= 5.3 director Fawn Veerasunthorn, Chris Buck Adventure movies.",Should return movies matching multiple constraints.,371.63,3,0,3,True,0.3333,1.0,0.0,0.0,0.6,Wish,False,False,False,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,177.11,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,264.12,3,0,3,True,1.0,1.0,0.0,0.0,1.0,As Good as It Gets,False,False,False,False,False
+rag,Show Adventure rating >= 7.0 director Dexter Fletcher Adventure movies.,Should return movies matching multiple constraints.,290.48,3,0,3,True,0.3333,0.5,0.0,0.0,0.6,Ghosted,False,False,True,False,False
+rag,Suggest Action movies.,Should return Action movies.,161.61,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Crime movies with rating above 4.7.,Should prioritize Crime movies with rating >= 4.7.,243.79,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Good Time,False,False,False,False,False
+rag,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,273.99,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Suggest Adventure movies.,Should return Adventure movies.,163.84,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag,Good Horror movies with rating above 5.0.,Should prioritize Horror movies with rating >= 5.0.,258.6,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,Scary Movie 5,True,False,True,False,False
+rag,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,300.38,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Suggest Comedy movies.,Should return Comedy movies.,173.47,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Action movies with rating above 5.2.,Should prioritize Action movies with rating >= 5.2.,247.63,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Show Drama rating >= 7.3 Drama movies.,Should return movies matching multiple constraints.,268.8,3,0,3,True,1.0,1.0,0.0,0.0,1.0,3-Iron,False,False,False,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,168.29,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Comedy movies with rating above 6.3.,Should prioritize Comedy movies with rating >= 6.3.,257.72,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,The Ridiculous 6,False,False,True,False,False
+rag,Show Action rating >= 6.5 director Dhanush Action movies.,Should return movies matching multiple constraints.,272.06,3,0,3,True,0.3333,1.0,0.0,0.0,0.6,Raayan,False,False,False,False,False
+rag,Suggest Horror movies.,Should return Horror movies.,177.36,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Don't Be Afraid of the Dark,False,False,False,False,False
+rag,Good Comedy movies with rating above 4.8.,Should prioritize Comedy movies with rating >= 4.8.,261.27,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Action rating >= 6.0 Action movies.,Should return movies matching multiple constraints.,275.97,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Suggest Horror movies.,Should return Horror movies.,163.73,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Don't Be Afraid of the Dark,False,False,False,False,False
+rag,Good Comedy movies with rating above 6.4.,Should prioritize Comedy movies with rating >= 6.4.,259.13,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,As Good as It Gets,False,False,False,False,False
+rag,Show Comedy rating >= 5.6 Comedy movies.,Should return movies matching multiple constraints.,292.59,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The King of Comedy,False,False,False,False,False
+rag,Suggest Drama movies.,Should return Drama movies.,191.39,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Dream House,False,False,False,False,False
+rag,Good Drama movies with rating above 6.9.,Should prioritize Drama movies with rating >= 6.9.,325.04,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Adventure rating >= 6.0 Adventure movies.,Should return movies matching multiple constraints.,302.6,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Legend,False,False,False,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,190.76,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,556.9,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,Highest 2 Lowest,False,False,True,False,False
+rag,Show Drama rating >= 6.5 director Abbas Kiarostami Drama movies.,Should return movies matching multiple constraints.,387.04,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Through the Olive Trees,False,False,False,False,False
+rag,Suggest Drama movies.,Should return Drama movies.,188.66,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Dream House,False,False,False,False,False
+rag,Good Drama movies with rating above 7.8.,Should prioritize Drama movies with rating >= 7.8.,290.06,2,0,2,True,1.0,1.0,0.0,0.0,1.0,Miracle in Cell No. 7,False,False,False,False,False
+rag,Show Drama rating >= 7.3 director John Ford Drama movies.,Should return movies matching multiple constraints.,371.16,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,3 Godfathers,False,False,True,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,180.58,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Crime movies with rating above 5.9.,Should prioritize Crime movies with rating >= 5.9.,362.18,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Action rating >= 6.1 Action movies.,Should return movies matching multiple constraints.,400.68,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Last Action Hero,False,False,False,False,False
+rag,Suggest Drama movies.,Should return Drama movies.,250.68,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Dream House,False,False,False,False,False
+rag,Good Crime movies with rating above 5.2.,Should prioritize Crime movies with rating >= 5.2.,376.77,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Highest 2 Lowest,False,False,False,False,False
+rag,Show Crime rating >= 7.5 Crime movies.,Should return movies matching multiple constraints.,343.43,3,0,3,True,0.3333,1.0,0.0,0.0,0.6,Seven,False,False,False,False,False
+rag,Suggest Action movies.,Should return Action movies.,211.11,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Comedy movies with rating above 5.5.,Should prioritize Comedy movies with rating >= 5.5.,446.43,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Top Five,False,False,False,False,False
+rag,Show Horror rating >= 5.5 Horror movies.,Should return movies matching multiple constraints.,395.19,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Creepshow,False,False,False,False,False
+rag,Suggest Adventure movies.,Should return Adventure movies.,505.23,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag,Good Biography movies with rating above 8.2.,Should prioritize Biography movies with rating >= 8.2.,525.94,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Highest 2 Lowest,True,False,True,False,False
+rag,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,702.18,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Suggest Action movies.,Should return Action movies.,523.6,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Action movies with rating above 4.7.,Should prioritize Action movies with rating >= 4.7.,520.1,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Speed,False,False,False,False,False
+rag,Show Drama rating >= 7.2 director Tom McCarthy Drama movies.,Should return movies matching multiple constraints.,951.37,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,Win Win,False,False,True,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,443.83,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Crime movies with rating above 5.5.,Should prioritize Crime movies with rating >= 5.5.,787.64,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Highest 2 Lowest,False,False,False,False,False
+rag,Show Crime rating >= 5.4 Crime movies.,Should return movies matching multiple constraints.,393.7,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Law Abiding Citizen,False,False,False,False,False
+rag,Suggest Adventure movies.,Should return Adventure movies.,242.32,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag,Good Biography movies with rating above 7.7.,Should prioritize Biography movies with rating >= 7.7.,732.7,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Seven Pounds,True,False,True,False,False
+rag,Show Action rating >= 7.3 Action movies.,Should return movies matching multiple constraints.,394.28,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Last Action Hero,False,False,True,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,250.13,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,503.63,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Miracle in Cell No. 7,False,False,False,False,False
+rag,Show Comedy rating >= 7.6 Comedy movies.,Should return movies matching multiple constraints.,662.66,3,0,3,True,0.3333,1.0,0.0,0.0,0.6,The King of Comedy,False,False,False,False,False
+rag,Suggest Adventure movies.,Should return Adventure movies.,347.15,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,564.75,3,0,3,True,0.6667,0.5,0.0,0.0,0.8,Highest 2 Lowest,False,False,True,False,False
+rag,Show Drama rating >= 4.8 Drama movies.,Should return movies matching multiple constraints.,685.13,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,550.69,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Crime movies with rating above 5.1.,Should prioritize Crime movies with rating >= 5.1.,617.24,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Highest 2 Lowest,False,False,False,False,False
+rag,Show Comedy rating >= 5.5 Comedy movies.,Should return movies matching multiple constraints.,869.81,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Showtime,False,False,False,False,False
+rag,Suggest Drama movies.,Should return Drama movies.,294.91,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Dream House,False,False,False,False,False
+rag,Good Action movies with rating above 4.4.,Should prioritize Action movies with rating >= 4.4.,874.71,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,848.81,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Suggest Action movies.,Should return Action movies.,264.99,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Adventure movies with rating above 7.4.,Should prioritize Adventure movies with rating >= 7.4.,343.96,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Cliffhanger,False,False,True,False,False
+rag,Show Action rating >= 6.7 Action movies.,Should return movies matching multiple constraints.,803.09,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Lethal Weapon 2,False,False,False,False,False
+rag,Suggest Crime movies.,Should return Crime movies.,365.36,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Under Suspicion,False,False,False,False,False
+rag,Good Drama movies with rating above 5.3.,Should prioritize Drama movies with rating >= 5.3.,381.54,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Highest 2 Lowest,False,False,False,False,False
+rag,Show Comedy rating >= 6.5 Comedy movies.,Should return movies matching multiple constraints.,368.79,3,0,3,True,0.3333,0.5,0.0,0.0,0.6,Showtime,False,False,True,False,False
+rag,Suggest Comedy movies.,Should return Comedy movies.,184.65,3,0,3,True,1.0,1.0,0.0,0.0,1.0,The 'Burbs,False,False,False,False,False
+rag,Good Action movies with rating above 3.3.,Should prioritize Action movies with rating >= 3.3.,536.46,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,790.54,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Suggest Action movies.,Should return Action movies.,580.25,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,Good Comedy movies with rating above 4.9.,Should prioritize Comedy movies with rating >= 4.9.,551.61,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Biography rating >= 6.7 Biography movies.,Should return movies matching multiple constraints.,388.98,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Sly,False,False,False,False,False
+rag,Suggest Animation movies.,Should return Animation movies.,229.59,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Shaun the Sheep Movie,False,False,False,False,False
+rag,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,345.58,3,0,3,True,1.0,1.0,0.0,0.0,1.0,As Good as It Gets,False,False,False,False,False
+rag,Show Action rating >= 6.5 director Laxman Utekar Action movies.,Should return movies matching multiple constraints.,414.74,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Beast,False,False,True,False,True
+rag,Suggest Action movies.,Should return Action movies.,228.88,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Last Action Hero,False,False,False,False,False
+rag,2010 के बाद रिलीज़ हुई अच्छी साइ-फाई फिल्में सुझाएं,2010 या बाद की साइ-फाई फिल्में लौटानी चाहिए।,766.93,3,0,3,False,0.0,0.0,1.0,0.0,0.0,2010: The Year We Make Contact,False,True,False,False,False
+rag,उच्च IMDb रेटिंग वाली ड्रामा फिल्में (रेटिंग >= 7) दिखाइए,रेटिंग >= 7 वाली ड्रामा फिल्में प्राथमिकता में होनी चाहिए।,989.38,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Drishyam 2,False,False,False,False,False
+rag,किसी भी क्रिस्टोफ़र नोलन द्वारा निर्देशित फिल्में बताइए,ऐसी फिल्में लौटानी चाहिए जिनके निर्देशक में 'Christopher Nolan' हो।,637.17,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Following,False,False,False,False,False
+rag,120 मिनट से कम अवधि वाली एक्शन फिल्में दिखाइए,duration <= 120 और genre में Action वाली फिल्में लौटानी चाहिए।,415.63,3,0,3,True,0.3333,0.5,0.0,0.0,0.6,120 BPM (Beats Per Minute),True,False,False,True,False
+rag,2005 से पहले की कॉमेडी फिल्में सुझाइए,release year <= 2005 और genre में Comedy होनी चाहिए।,334.12,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,200 Cigarettes,False,False,False,False,False
+rag,2015 के बाद के थ्रिलर जिनकी रेटिंग >= 7 हो खोजिए,"Thriller, year >= 2015, और rating >= 7 वाले परिणाम चाहिए।",436.87,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Drishyam 2,True,False,False,False,False
+rag,अच्छी रेटिंग वाली फैमिली फिल्में दिखाइए (rating >= 6),Family genre और rating >= 6 वाली फिल्में लौटानी चाहिए।,392.16,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Dookudu,True,False,False,False,False
+rag,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,460.29,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Casualties of War,True,False,False,False,False
+rag,2000 के बाद की ऐनिमेशन फिल्में सुझाइए,Animation genre और year >= 2000 वाली फिल्में लौटानी चाहिए।,456.05,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Fantasia 2000,False,True,False,False,False
+rag,IMDb >= 6.5 वाली मिस्ट्री फिल्में दिखाइए,Mystery genre और rating >= 6.5 वाली फिल्में होना चाहिए।,491.49,3,0,3,False,0.0,0.0,1.0,0.0,0.0,6 Souls,False,False,True,False,False
+tool,Suggest Action movies.,Should return Action movies.,2275.64,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,1223.71,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+tool,Show Action rating >= 5.3 director Peter Facinelli Action movies.,Should return movies matching multiple constraints.,775.14,0,1,1,True,1.0,1.0,0.0,1.0,1.0,The Vanished,False,False,False,False,False
+tool,Suggest Action movies.,Should return Action movies.,786.35,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 6.0.,Should prioritize Comedy movies with rating >= 6.0.,791.13,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Drama rating >= 7.6 director Otto Preminger Drama movies.,Should return movies matching multiple constraints.,975.94,0,2,2,True,1.0,1.0,0.0,1.0,1.0,Anatomy of a Murder,False,False,False,False,False
+tool,Suggest Adventure movies.,Should return Adventure movies.,798.42,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 6.7.,Should prioritize Comedy movies with rating >= 6.7.,937.88,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Drama rating >= 6.5 Drama movies.,Should return movies matching multiple constraints.,700.74,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,752.85,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,693.52,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Biography rating >= 6.4 Biography movies.,Should return movies matching multiple constraints.,700.24,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,769.39,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Crime movies with rating above 6.2.,Should prioritize Crime movies with rating >= 6.2.,844.46,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,831.85,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Suggest Drama movies.,Should return Drama movies.,644.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Good Comedy movies with rating above 1.8.,Should prioritize Comedy movies with rating >= 1.8.,817.58,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Drama rating >= 7.2 Drama movies.,Should return movies matching multiple constraints.,678.28,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Suggest Action movies.,Should return Action movies.,820.96,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 6.1.,Should prioritize Comedy movies with rating >= 6.1.,640.95,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,"Show Adventure rating >= 5.3 director Fawn Veerasunthorn, Chris Buck Adventure movies.",Should return movies matching multiple constraints.,817.56,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Wish,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,615.86,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,654.73,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Adventure rating >= 7.0 director Dexter Fletcher Adventure movies.,Should return movies matching multiple constraints.,698.17,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Eddie the Eagle,False,False,False,False,False
+tool,Suggest Action movies.,Should return Action movies.,705.85,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Crime movies with rating above 4.7.,Should prioritize Crime movies with rating >= 4.7.,635.28,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,663.6,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+tool,Suggest Adventure movies.,Should return Adventure movies.,762.25,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Horror movies with rating above 5.0.,Should prioritize Horror movies with rating >= 5.0.,829.12,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+tool,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,682.82,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Suggest Comedy movies.,Should return Comedy movies.,721.07,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Action movies with rating above 5.2.,Should prioritize Action movies with rating >= 5.2.,632.99,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Show Drama rating >= 7.3 Drama movies.,Should return movies matching multiple constraints.,754.37,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,1961.0,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Comedy movies with rating above 6.3.,Should prioritize Comedy movies with rating >= 6.3.,655.94,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Action rating >= 6.5 director Dhanush Action movies.,Should return movies matching multiple constraints.,677.74,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Raayan,False,False,False,False,False
+tool,Suggest Horror movies.,Should return Horror movies.,662.08,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+tool,Good Comedy movies with rating above 4.8.,Should prioritize Comedy movies with rating >= 4.8.,670.84,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Action rating >= 6.0 Action movies.,Should return movies matching multiple constraints.,755.04,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Suggest Horror movies.,Should return Horror movies.,673.54,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+tool,Good Comedy movies with rating above 6.4.,Should prioritize Comedy movies with rating >= 6.4.,610.47,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Comedy rating >= 5.6 Comedy movies.,Should return movies matching multiple constraints.,814.98,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Suggest Drama movies.,Should return Drama movies.,638.96,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Good Drama movies with rating above 6.9.,Should prioritize Drama movies with rating >= 6.9.,686.78,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Adventure rating >= 6.0 Adventure movies.,Should return movies matching multiple constraints.,679.44,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,1054.46,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,791.37,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Drama rating >= 6.5 director Abbas Kiarostami Drama movies.,Should return movies matching multiple constraints.,812.56,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Close-Up,False,False,False,False,False
+tool,Suggest Drama movies.,Should return Drama movies.,789.57,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Good Drama movies with rating above 7.8.,Should prioritize Drama movies with rating >= 7.8.,60475.89,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Drama rating >= 7.3 director John Ford Drama movies.,Should return movies matching multiple constraints.,635.76,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Man Who Shot Liberty Valance,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,808.42,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Crime movies with rating above 5.9.,Should prioritize Crime movies with rating >= 5.9.,769.19,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Action rating >= 6.1 Action movies.,Should return movies matching multiple constraints.,818.73,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Suggest Drama movies.,Should return Drama movies.,637.77,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Good Crime movies with rating above 5.2.,Should prioritize Crime movies with rating >= 5.2.,789.5,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Crime rating >= 7.5 Crime movies.,Should return movies matching multiple constraints.,1134.09,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Suggest Action movies.,Should return Action movies.,745.61,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 5.5.,Should prioritize Comedy movies with rating >= 5.5.,678.52,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Horror rating >= 5.5 Horror movies.,Should return movies matching multiple constraints.,781.71,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+tool,Suggest Adventure movies.,Should return Adventure movies.,737.7,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Biography movies with rating above 8.2.,Should prioritize Biography movies with rating >= 8.2.,836.3,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Schindler's List,False,False,False,False,False
+tool,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,623.87,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Suggest Action movies.,Should return Action movies.,800.71,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Action movies with rating above 4.7.,Should prioritize Action movies with rating >= 4.7.,1128.13,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Show Drama rating >= 7.2 director Tom McCarthy Drama movies.,Should return movies matching multiple constraints.,884.32,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Spotlight,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,672.34,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Crime movies with rating above 5.5.,Should prioritize Crime movies with rating >= 5.5.,704.84,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Crime rating >= 5.4 Crime movies.,Should return movies matching multiple constraints.,756.7,0,3,3,True,0.3333,0.3333,0.0,1.0,0.6,The Shawshank Redemption,True,False,False,False,False
+tool,Suggest Adventure movies.,Should return Adventure movies.,781.71,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Biography movies with rating above 7.7.,Should prioritize Biography movies with rating >= 7.7.,584.61,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Schindler's List,False,False,False,False,False
+tool,Show Action rating >= 7.3 Action movies.,Should return movies matching multiple constraints.,841.44,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,805.82,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,1538.1,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Comedy rating >= 7.6 Comedy movies.,Should return movies matching multiple constraints.,680.87,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Suggest Adventure movies.,Should return Adventure movies.,825.39,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,756.9,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Drama rating >= 4.8 Drama movies.,Should return movies matching multiple constraints.,776.43,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,845.57,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Crime movies with rating above 5.1.,Should prioritize Crime movies with rating >= 5.1.,773.36,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Show Comedy rating >= 5.5 Comedy movies.,Should return movies matching multiple constraints.,658.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Suggest Drama movies.,Should return Drama movies.,627.71,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Good Action movies with rating above 4.4.,Should prioritize Action movies with rating >= 4.4.,812.33,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,765.37,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Suggest Action movies.,Should return Action movies.,983.81,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Adventure movies with rating above 7.4.,Should prioritize Adventure movies with rating >= 7.4.,944.79,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Show Action rating >= 6.7 Action movies.,Should return movies matching multiple constraints.,903.38,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Suggest Crime movies.,Should return Crime movies.,1155.04,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+tool,Good Drama movies with rating above 5.3.,Should prioritize Drama movies with rating >= 5.3.,795.33,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,Show Comedy rating >= 6.5 Comedy movies.,Should return movies matching multiple constraints.,1002.46,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Suggest Comedy movies.,Should return Comedy movies.,882.74,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Good Action movies with rating above 3.3.,Should prioritize Action movies with rating >= 3.3.,809.7,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,868.67,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Suggest Action movies.,Should return Action movies.,895.35,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 4.9.,Should prioritize Comedy movies with rating >= 4.9.,658.99,0,1,1,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Biography rating >= 6.7 Biography movies.,Should return movies matching multiple constraints.,917.03,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+tool,Suggest Animation movies.,Should return Animation movies.,1130.76,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,797.75,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+tool,Show Action rating >= 6.5 director Laxman Utekar Action movies.,Should return movies matching multiple constraints.,645.85,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Chhaava,False,False,False,False,False
+tool,Suggest Action movies.,Should return Action movies.,60223.76,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,2010 के बाद रिलीज़ हुई अच्छी साइ-फाई फिल्में सुझाएं,2010 या बाद की साइ-फाई फिल्में लौटानी चाहिए।,665.89,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Inception,False,False,False,False,False
+tool,उच्च IMDb रेटिंग वाली ड्रामा फिल्में (रेटिंग >= 7) दिखाइए,रेटिंग >= 7 वाली ड्रामा फिल्में प्राथमिकता में होनी चाहिए।,660.18,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+tool,किसी भी क्रिस्टोफ़र नोलन द्वारा निर्देशित फिल्में बताइए,ऐसी फिल्में लौटानी चाहिए जिनके निर्देशक में 'Christopher Nolan' हो।,759.11,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,False,False,False,False,True
+tool,120 मिनट से कम अवधि वाली एक्शन फिल्में दिखाइए,duration <= 120 और genre में Action वाली फिल्में लौटानी चाहिए।,717.15,0,3,3,False,0.0,0.0,1.0,0.0,0.0,Attack on Titan: The Last Attack,False,False,False,True,False
+tool,2005 से पहले की कॉमेडी फिल्में सुझाइए,release year <= 2005 और genre में Comedy होनी चाहिए।,681.4,0,3,3,False,0.0,0.0,1.0,0.0,0.0,Mission Muh Dikhayi,False,True,False,False,False
+tool,2015 के बाद के थ्रिलर जिनकी रेटिंग >= 7 हो खोजिए,"Thriller, year >= 2015, और rating >= 7 वाले परिणाम चाहिए।",666.75,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Mirror Game,False,False,False,False,False
+tool,अच्छी रेटिंग वाली फैमिली फिल्में दिखाइए (rating >= 6),Family genre और rating >= 6 वाली फिल्में लौटानी चाहिए।,895.87,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Mission Muh Dikhayi,False,False,False,False,False
+tool,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,619.96,0,3,3,False,0.0,0.0,1.0,0.0,0.0,20 Days in Mariupol,False,True,False,False,False
+tool,2000 के बाद की ऐनिमेशन फिल्में सुझाइए,Animation genre और year >= 2000 वाली फिल्में लौटानी चाहिए।,733.87,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+tool,IMDb >= 6.5 वाली मिस्ट्री फिल्में दिखाइए,Mystery genre और rating >= 6.5 वाली फिल्में होना चाहिए।,751.95,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Mirror Game,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,632.99,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,1059.92,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag+tool,Show Action rating >= 5.3 director Peter Facinelli Action movies.,Should return movies matching multiple constraints.,705.96,0,1,1,True,1.0,1.0,0.0,1.0,1.0,The Vanished,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,1602.22,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 6.0.,Should prioritize Comedy movies with rating >= 6.0.,998.18,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Drama rating >= 7.6 director Otto Preminger Drama movies.,Should return movies matching multiple constraints.,1042.66,0,2,2,True,1.0,1.0,0.0,1.0,1.0,Anatomy of a Murder,False,False,False,False,False
+rag+tool,Suggest Adventure movies.,Should return Adventure movies.,190.3,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 6.7.,Should prioritize Comedy movies with rating >= 6.7.,1166.12,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Drama rating >= 6.5 Drama movies.,Should return movies matching multiple constraints.,639.1,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,766.85,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,637.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Biography rating >= 6.4 Biography movies.,Should return movies matching multiple constraints.,577.81,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,680.86,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 6.2.,Should prioritize Crime movies with rating >= 6.2.,717.8,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,1522.23,2,0,2,False,0.0,0.0,1.0,0.0,0.0,The King of Comedy,False,False,False,False,True
+rag+tool,Suggest Drama movies.,Should return Drama movies.,654.82,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 1.8.,Should prioritize Comedy movies with rating >= 1.8.,696.32,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Drama rating >= 7.2 Drama movies.,Should return movies matching multiple constraints.,737.4,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,636.27,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 6.1.,Should prioritize Comedy movies with rating >= 6.1.,702.35,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,"Show Adventure rating >= 5.3 director Fawn Veerasunthorn, Chris Buck Adventure movies.",Should return movies matching multiple constraints.,731.62,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Wish,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,793.25,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,685.5,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Adventure rating >= 7.0 director Dexter Fletcher Adventure movies.,Should return movies matching multiple constraints.,755.81,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Eddie the Eagle,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,638.13,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 4.7.,Should prioritize Crime movies with rating >= 4.7.,623.31,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,1043.09,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag+tool,Suggest Adventure movies.,Should return Adventure movies.,160.91,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag+tool,Good Horror movies with rating above 5.0.,Should prioritize Horror movies with rating >= 5.0.,704.46,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+rag+tool,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,925.85,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,664.23,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Action movies with rating above 5.2.,Should prioritize Action movies with rating >= 5.2.,804.92,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Show Drama rating >= 7.3 Drama movies.,Should return movies matching multiple constraints.,950.38,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,630.4,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 6.3.,Should prioritize Comedy movies with rating >= 6.3.,636.67,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Action rating >= 6.5 director Dhanush Action movies.,Should return movies matching multiple constraints.,966.43,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Raayan,False,False,False,False,False
+rag+tool,Suggest Horror movies.,Should return Horror movies.,616.72,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 4.8.,Should prioritize Comedy movies with rating >= 4.8.,838.07,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Action rating >= 6.0 Action movies.,Should return movies matching multiple constraints.,924.97,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Suggest Horror movies.,Should return Horror movies.,640.45,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 6.4.,Should prioritize Comedy movies with rating >= 6.4.,60163.12,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Comedy rating >= 5.6 Comedy movies.,Should return movies matching multiple constraints.,701.09,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Suggest Drama movies.,Should return Drama movies.,887.47,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 6.9.,Should prioritize Drama movies with rating >= 6.9.,786.75,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Adventure rating >= 6.0 Adventure movies.,Should return movies matching multiple constraints.,808.19,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,626.51,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,646.78,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Drama rating >= 6.5 director Abbas Kiarostami Drama movies.,Should return movies matching multiple constraints.,782.89,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Close-Up,False,False,False,False,False
+rag+tool,Suggest Drama movies.,Should return Drama movies.,798.31,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 7.8.,Should prioritize Drama movies with rating >= 7.8.,663.77,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Drama rating >= 7.3 director John Ford Drama movies.,Should return movies matching multiple constraints.,771.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Man Who Shot Liberty Valance,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,787.9,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 5.9.,Should prioritize Crime movies with rating >= 5.9.,634.87,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Action rating >= 6.1 Action movies.,Should return movies matching multiple constraints.,637.13,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Suggest Drama movies.,Should return Drama movies.,803.56,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 5.2.,Should prioritize Crime movies with rating >= 5.2.,591.76,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Crime rating >= 7.5 Crime movies.,Should return movies matching multiple constraints.,657.6,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,809.32,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 5.5.,Should prioritize Comedy movies with rating >= 5.5.,807.6,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Horror rating >= 5.5 Horror movies.,Should return movies matching multiple constraints.,619.83,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Manichithrathazhu,False,False,False,False,False
+rag+tool,Suggest Adventure movies.,Should return Adventure movies.,151.13,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag+tool,Good Biography movies with rating above 8.2.,Should prioritize Biography movies with rating >= 8.2.,801.24,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Schindler's List,False,False,False,False,False
+rag+tool,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,955.55,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Suggest Action movies.,Should return Action movies.,800.99,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Action movies with rating above 4.7.,Should prioritize Action movies with rating >= 4.7.,795.43,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Show Drama rating >= 7.2 director Tom McCarthy Drama movies.,Should return movies matching multiple constraints.,637.23,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Spotlight,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,645.95,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 5.5.,Should prioritize Crime movies with rating >= 5.5.,744.42,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Crime rating >= 5.4 Crime movies.,Should return movies matching multiple constraints.,675.77,0,3,3,True,0.3333,0.3333,0.0,1.0,0.6,The Shawshank Redemption,True,False,False,False,False
+rag+tool,Suggest Adventure movies.,Should return Adventure movies.,150.5,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag+tool,Good Biography movies with rating above 7.7.,Should prioritize Biography movies with rating >= 7.7.,668.95,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Schindler's List,False,False,False,False,False
+rag+tool,Show Action rating >= 7.3 Action movies.,Should return movies matching multiple constraints.,773.26,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,783.61,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 5.7.,Should prioritize Drama movies with rating >= 5.7.,959.37,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Comedy rating >= 7.6 Comedy movies.,Should return movies matching multiple constraints.,634.13,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Suggest Adventure movies.,Should return Adventure movies.,168.06,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Around the World in 80 Days,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 6.2.,Should prioritize Drama movies with rating >= 6.2.,793.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Drama rating >= 4.8 Drama movies.,Should return movies matching multiple constraints.,1110.71,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,635.38,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Crime movies with rating above 5.1.,Should prioritize Crime movies with rating >= 5.1.,633.76,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Godfather,False,False,False,False,False
+rag+tool,Show Comedy rating >= 5.5 Comedy movies.,Should return movies matching multiple constraints.,1106.03,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Suggest Drama movies.,Should return Drama movies.,798.98,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Good Action movies with rating above 4.4.,Should prioritize Action movies with rating >= 4.4.,644.35,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,1002.03,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Suggest Action movies.,Should return Action movies.,751.34,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Adventure movies with rating above 7.4.,Should prioritize Adventure movies with rating >= 7.4.,628.17,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Show Action rating >= 6.7 Action movies.,Should return movies matching multiple constraints.,646.8,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Suggest Crime movies.,Should return Crime movies.,150.32,3,0,3,True,1.0,1.0,0.0,0.0,1.0,Under Suspicion,False,False,False,False,False
+rag+tool,Good Drama movies with rating above 5.3.,Should prioritize Drama movies with rating >= 5.3.,796.03,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,Show Comedy rating >= 6.5 Comedy movies.,Should return movies matching multiple constraints.,639.7,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Suggest Comedy movies.,Should return Comedy movies.,793.64,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Good Action movies with rating above 3.3.,Should prioritize Action movies with rating >= 3.3.,669.25,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,60697.71,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Suggest Action movies.,Should return Action movies.,695.04,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 4.9.,Should prioritize Comedy movies with rating >= 4.9.,813.83,0,1,1,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Biography rating >= 6.7 Biography movies.,Should return movies matching multiple constraints.,775.36,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+rag+tool,Suggest Animation movies.,Should return Animation movies.,635.43,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,Good Comedy movies with rating above 5.4.,Should prioritize Comedy movies with rating >= 5.4.,1118.82,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Chaos Class,False,False,False,False,False
+rag+tool,Show Action rating >= 6.5 director Laxman Utekar Action movies.,Should return movies matching multiple constraints.,644.61,0,1,1,True,1.0,1.0,0.0,1.0,1.0,Chhaava,False,False,False,False,False
+rag+tool,Suggest Action movies.,Should return Action movies.,644.66,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Attack on Titan: The Last Attack,False,False,False,False,False
+rag+tool,2010 के बाद रिलीज़ हुई अच्छी साइ-फाई फिल्में सुझाएं,2010 या बाद की साइ-फाई फिल्में लौटानी चाहिए।,297.43,3,0,3,False,0.0,0.0,1.0,0.0,0.0,2010: The Year We Make Contact,False,True,False,False,False
+rag+tool,उच्च IMDb रेटिंग वाली ड्रामा फिल्में (रेटिंग >= 7) दिखाइए,रेटिंग >= 7 वाली ड्रामा फिल्में प्राथमिकता में होनी चाहिए।,647.08,0,3,3,True,1.0,1.0,0.0,1.0,1.0,The Shawshank Redemption,False,False,False,False,False
+rag+tool,किसी भी क्रिस्टोफ़र नोलन द्वारा निर्देशित फिल्में बताइए,ऐसी फिल्में लौटानी चाहिए जिनके निर्देशक में 'Christopher Nolan' हो।,261.19,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,Following,False,False,False,False,False
+rag+tool,120 मिनट से कम अवधि वाली एक्शन फिल्में दिखाइए,duration <= 120 और genre में Action वाली फिल्में लौटानी चाहिए।,257.02,3,0,3,True,0.3333,0.5,0.0,0.0,0.6,120 BPM (Beats Per Minute),True,False,False,True,False
+rag+tool,2005 से पहले की कॉमेडी फिल्में सुझाइए,release year <= 2005 और genre में Comedy होनी चाहिए।,261.53,3,0,3,True,0.6667,1.0,0.0,0.0,0.8,200 Cigarettes,False,False,False,False,False
+rag+tool,2015 के बाद के थ्रिलर जिनकी रेटिंग >= 7 हो खोजिए,"Thriller, year >= 2015, और rating >= 7 वाले परिणाम चाहिए।",351.72,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Drishyam 2,True,False,False,False,False
+rag+tool,अच्छी रेटिंग वाली फैमिली फिल्में दिखाइए (rating >= 6),Family genre और rating >= 6 वाली फिल्में लौटानी चाहिए।,679.77,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Mission Muh Dikhayi,False,False,False,False,False
+rag+tool,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,249.65,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Casualties of War,True,False,False,False,False
+rag+tool,2000 के बाद की ऐनिमेशन फिल्में सुझाइए,Animation genre और year >= 2000 वाली फिल्में लौटानी चाहिए।,291.08,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Fantasia 2000,False,True,False,False,False
+rag+tool,IMDb >= 6.5 वाली मिस्ट्री फिल्में दिखाइए,Mystery genre और rating >= 6.5 वाली फिल्में होना चाहिए।,794.37,0,3,3,True,1.0,1.0,0.0,1.0,1.0,Mirror Game,False,False,False,False,False

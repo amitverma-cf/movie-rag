@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 from src.agent import MovieAgent
 from src.dashboard import launch_dashboard
@@ -13,9 +14,19 @@ from src.similarity_search import Retriever
 
 def run_eval():
     agent = MovieAgent()
-    detail, summary = run_benchmarks(agent, total_cases=100)
-    print(benchmark_markdown(summary, total_cases=100))
-    print(detail.head(20))
+    assets_dir = Path(__file__).resolve().parent.parent / "assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    for prompt_language, suffix in (("hindi+english", "hindi_english"), ("english_only", "english_only")):
+        detail, summary = run_benchmarks(agent, prompt_language=prompt_language)
+        if not detail.empty:
+            detail[detail["passed"] == False].to_csv(assets_dir / f"failures_{suffix}.csv", index=False)
+            detail.to_csv(assets_dir / f"benchmark_detail_{suffix}.csv", index=False)
+        if not summary.empty:
+            summary.to_csv(assets_dir / f"benchmark_summary_{suffix}.csv", index=False)
+        print(f"\n=== Evaluation: {prompt_language} ===")
+        print(benchmark_markdown(summary, total_cases=len(detail) // len(detail['mode'].unique()) if not detail.empty else 0))
+        print(detail.head(20))
 
 
 def run_llm_demo(movies, retriever):

@@ -1,0 +1,4 @@
+mode,avg_latency_ms,p95_latency_ms,avg_hits,accuracy_pct,precision_at_k,mrr,hallucination_rate,tool_call_accuracy,faithfulness_score
+rag,249.42,316.33,2.65,77.27,66.67,0.7121,22.73,0.0,70.91
+rag+tool,1811.91,1191.23,2.71,88.18,86.36,0.8712,11.82,80.0,87.09
+tool,1865.62,1152.68,2.66,88.18,87.58,0.8758,11.82,88.18,87.82

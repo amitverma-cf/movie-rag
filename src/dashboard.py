@@ -8,9 +8,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
-from src.agent import MovieAgent
 from src.eda import build_eda_artifacts
 from src.evaluation import run_benchmarks
+
+
+ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 
 
 def _youtube_embed_url(url):
@@ -32,51 +34,56 @@ def _movie_card(row):
     rating = html.escape(str(row.get("rating", "NA")))
     genre = html.escape(str(row.get("genre", "NA")))
     director = html.escape(str(row.get("director", "NA")))
-    cast = html.escape(str(row.get("cast", "NA")))
-    description = html.escape(str(row.get("description", "No description.")))
     source = html.escape(str(row.get("source", "N/A")))
     poster_url = str(row.get("poster_url", "") or "").strip()
     trailer_url = str(row.get("trailer_url", "") or "").strip()
     embed = _youtube_embed_url(trailer_url)
 
-    poster = (
-        f"<img src='{html.escape(poster_url)}' alt='poster' style='width:130px;height:195px;object-fit:cover;border-radius:12px;border:1px solid #264653;'>"
-        if poster_url
-        else "<div style='width:130px;height:195px;border-radius:12px;border:1px dashed #264653;display:flex;align-items:center;justify-content:center;'>No Poster</div>"
+    poster_html = (
+        f"<img src='{html.escape(poster_url)}' style='width:100%;height:240px;object-fit:cover;border-radius:8px;'>"
+        if poster_url else "<div style='width:100%;height:240px;background:#1e293b;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748b;'>No Poster</div>"
     )
-    trailer = (
-        f"<iframe src='{html.escape(embed)}' title='Trailer' width='100%' height='220' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
-        if embed
-        else (f"<a href='{html.escape(trailer_url)}' target='_blank'>Open Trailer</a>" if trailer_url else "No trailer available")
+    
+    trailer_html = (
+        f"<div style='margin-top:10px;font-size:12px;color:#94a3b8;'>Trailer</div>"
+        f"<iframe src='{html.escape(embed)}' style='width:100%;height:180px;border-radius:8px;border:none;margin-top:6px;' allowfullscreen></iframe>"
+        if embed else f"<div style='margin-top:10px;text-align:center;'><a href='{html.escape(trailer_url)}' target='_blank' style='color:#38bdf8;text-decoration:none;font-size:13px;'>View Trailer</a></div>" if trailer_url else ""
     )
 
     return f"""
-<div style='background:linear-gradient(135deg,#8e8ae0,#e9358b);border:1px solid #90be6d;border-radius:16px;padding:14px;margin:10px 0;'>
-  <div style='display:flex;gap:14px;flex-wrap:wrap;'>
-    <div>{poster}</div>
-    <div style='flex:1;min-width:260px;'>
-      <h3 style='margin:0 0 8px 0;color:#1d3557;'>{title} ({year})</h3>
-      <div style='font-size:14px;line-height:1.6;'>
-        <b>Rating:</b> {rating} | <b>Genre:</b> {genre} | <b>Source:</b> {source}<br>
-        <b>Director:</b> {director}<br>
-        <b>Cast:</b> {cast}<br>
-        <b>Description:</b> {description}
-      </div>
+<div style='background:#0f172a; border:1px solid #334155; border-radius:12px; padding:12px; height:100%; color:#f1f5f9;'>
+    {poster_html}
+    <div style='margin-top:10px;'>
+        <h4 style='margin:0 0 4px 0; font-size:16px; color:#f8fafc;'>{title} ({year})</h4>
+        <div style='font-size:12px; color:#94a3b8; line-height:1.4;'>
+            <b>Rating:</b> {rating} | <b>Genre:</b> {genre}<br>
+            <b>Director:</b> {director}<br>
+            <span style='font-size:10px; color:#475569;'>Source: {source}</span>
+        </div>
     </div>
-  </div>
-  <div style='margin-top:12px;'>{trailer}</div>
+    {trailer_html}
 </div>
 """
 
 
 def _cards_html(df):
     if df is None or df.empty:
-        return "<div style='padding:10px;border:1px dashed #90be6d;border-radius:10px;'>No movie cards available.</div>"
-    return "".join(_movie_card(row) for _, row in df.iterrows())
+        return ""
+    cards = [_movie_card(row) for _, row in df.iterrows()]
+    rows = []
+    for i in range(0, len(cards), 2):
+        left = cards[i]
+        right = cards[i + 1] if i + 1 < len(cards) else ""
+        rows.append(
+            f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;'>"
+            f"<div>{left}</div><div>{right}</div></div>"
+        )
+    return f"<div style='margin-top:20px;'>{''.join(rows)}</div>"
 
 
 def _benchmark_plot(summary_df):
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+    fig, axes = plt.subplots(2, 3, figsize=(16, 8))
+    axes = axes.flatten()
     if summary_df is None or summary_df.empty:
         for ax in axes:
             ax.text(0.5, 0.5, "No evaluation data", ha="center", va="center")
@@ -84,29 +91,95 @@ def _benchmark_plot(summary_df):
         plt.tight_layout()
         return fig
 
-    axes[0].bar(summary_df["mode"], summary_df["avg_latency_ms"], color=["#457b9d", "#e76f51", "#2a9d8f"])
-    axes[0].set_title("Avg Latency (ms)")
-    axes[0].grid(axis="y", alpha=0.25)
+    def _bar(ax, col, title, pct=False):
+        if col in summary_df.columns:
+            vals = summary_df[col]
+        else:
+            vals = pd.Series([0] * len(summary_df))
+        ax.bar(summary_df["mode"], vals, color=["#457b9d", "#e76f51", "#2a9d8f"])
+        ax.set_title(title)
+        if pct:
+            ax.set_ylim(0, 100)
+        ax.grid(axis="y", alpha=0.25)
 
-    if "accuracy_pct" in summary_df.columns:
-        acc_series = summary_df["accuracy_pct"]
-    elif "pass_rate" in summary_df.columns:
-        acc_series = summary_df["pass_rate"]
-    else:
-        acc_series = pd.Series([0] * len(summary_df))
-    axes[1].bar(summary_df["mode"], acc_series, color=["#264653", "#f4a261", "#2a9d8f"])
-    axes[1].set_title("Accuracy (%)")
-    axes[1].set_ylim(0, 100)
-    axes[1].grid(axis="y", alpha=0.25)
+    _bar(axes[0], "avg_latency_ms", "Avg Latency (ms)")
+    _bar(axes[1], "accuracy_pct", "Accuracy (%)", pct=True)
+    _bar(axes[2], "precision_at_k", "Precision@K (%)", pct=True)
+    _bar(axes[3], "mrr", "MRR")
+    _bar(axes[4], "hallucination_rate", "Hallucination Rate (%)", pct=True)
+    _bar(axes[5], "faithfulness_score", "Faithfulness (%)", pct=True)
 
     plt.tight_layout()
     return fig
 
 
+def _eda_artifact_paths():
+    return {
+        "summary": ASSETS_DIR / "eda_summary.csv",
+        "plot": ASSETS_DIR / "eda.png",
+    }
+
+
+def _load_eda_from_assets():
+    paths = _eda_artifact_paths()
+    if not paths["summary"].exists() or not paths["plot"].exists():
+        return None
+    return pd.read_csv(paths["summary"])
+
+
+def _save_eda_to_assets(summary_df, fig):
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    paths = _eda_artifact_paths()
+    summary_df.to_csv(paths["summary"], index=False)
+    fig.savefig(paths["plot"], dpi=160, bbox_inches="tight")
+
+
+def _eval_artifact_paths(prompt_language):
+    suffix = "english_only" if prompt_language == "english_only" else "hindi_english"
+    return {
+        "summary": ASSETS_DIR / f"benchmark_summary_{suffix}.csv",
+        "detail": ASSETS_DIR / f"benchmark_detail_{suffix}.csv",
+        "failures": ASSETS_DIR / f"failures_{suffix}.csv",
+        "plot": ASSETS_DIR / f"benchmark_plot_{suffix}.png",
+    }
+
+
+def _load_eval_from_assets(prompt_language):
+    paths = _eval_artifact_paths(prompt_language)
+    if not paths["summary"].exists() or not paths["detail"].exists():
+        return None, None
+
+    summary = pd.read_csv(paths["summary"])
+    detail = pd.read_csv(paths["detail"])
+    if "pass_rate" in summary.columns and "accuracy_pct" not in summary.columns:
+        summary = summary.rename(columns={"pass_rate": "accuracy_pct"})
+    return detail, summary
+
+
+def _save_eval_to_assets(detail, summary, prompt_language, fig):
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    paths = _eval_artifact_paths(prompt_language)
+    detail.to_csv(paths["detail"], index=False)
+    summary.to_csv(paths["summary"], index=False)
+    detail[detail["passed"] == False].to_csv(paths["failures"], index=False)
+    fig.savefig(paths["plot"], dpi=160, bbox_inches="tight")
+
+
+@st.cache_resource(show_spinner=False)
+def _get_cached_agent():
+    from src.agent import MovieAgent
+
+    return MovieAgent()
+
+
+@st.cache_data(show_spinner=False)
+def _cached_eda(_movies_df):
+    summary, fig = build_eda_artifacts(_movies_df)
+    return summary.reset_index(names=["feature"]), fig
+
+
 def _ensure_agent():
-    if "moviemate_agent" not in st.session_state:
-        st.session_state.moviemate_agent = MovieAgent()
-    return st.session_state.moviemate_agent
+    return _get_cached_agent()
 
 
 def _render_chat(agent):
@@ -115,8 +188,6 @@ def _render_chat(agent):
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
-    if "last_cards" not in st.session_state:
-        st.session_state.last_cards = ""
     if "last_metrics" not in st.session_state:
         st.session_state.last_metrics = {}
 
@@ -126,11 +197,16 @@ def _render_chat(agent):
         with st.chat_message("assistant"):
             st.markdown(bot_msg)
 
-    prompt = st.chat_input("Ask about movies")
+    prompt = st.chat_input("Message MovieMate")
     if prompt:
         result = agent.run(prompt, mode=mode, history=st.session_state.chat_history)
-        st.session_state.chat_history.append((prompt, result["answer"]))
-        st.session_state.last_cards = _cards_html(result["movies"])
+        
+        # Merge text and cards into one assistant bubble
+        full_response = result["answer"]
+        cards_html = _cards_html(result["movies"])
+        combined_html = f"{full_response}\n\n{cards_html}"
+        
+        st.session_state.chat_history.append((prompt, combined_html))
         st.session_state.last_metrics = {
             "mode": mode,
             "rag_hits": result.get("rag_count", 0),
@@ -141,71 +217,127 @@ def _render_chat(agent):
 
     metrics = st.session_state.last_metrics
     if metrics:
-        st.markdown("### Metrics")
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("Mode", str(metrics.get("mode", "n/a")))
-        c2.metric("Latency (s)", str(metrics.get("latency_sec", "n/a")))
-        c3.metric("Total Tokens", str(metrics.get("total_tokens", "n/a")))
-        c4.metric("Accuracy Proxy (hits)", str(int(metrics.get("rag_hits", 0)) + int(metrics.get("tool_hits", 0))))
-
-    st.markdown("### Movie Cards")
-    st.markdown(st.session_state.last_cards or _cards_html(pd.DataFrame()), unsafe_allow_html=True)
-
+        with st.expander("Session Metrics", expanded=False):
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("Mode", str(metrics.get("mode", "n/a")))
+            c2.metric("Latency (s)", str(metrics.get("latency_sec", "n/a")))
+            c3.metric("Total Tokens", str(metrics.get("total_tokens", "n/a")))
+            c4.metric("Accuracy Proxy", str(int(metrics.get("rag_hits", 0)) + int(metrics.get("tool_hits", 0))))
 
 def _render_eda(agent):
     st.subheader("EDA")
     if st.button("Refresh EDA"):
-        summary, fig = build_eda_artifacts(agent.movies)
-        st.session_state.eda_summary = summary.reset_index(names=["feature"])
-        st.session_state.eda_plot = fig
+        _cached_eda.clear()
+        summary, fig = _cached_eda(agent.movies)
+        st.session_state.eda_summary = summary
+        _save_eda_to_assets(summary, fig)
 
-    if "eda_summary" not in st.session_state or "eda_plot" not in st.session_state:
-        summary, fig = build_eda_artifacts(agent.movies)
-        st.session_state.eda_summary = summary.reset_index(names=["feature"])
-        st.session_state.eda_plot = fig
+    if "eda_summary" not in st.session_state:
+        loaded_summary = _load_eda_from_assets()
+        if loaded_summary is not None:
+            st.session_state.eda_summary = loaded_summary
+        else:
+            summary, fig = _cached_eda(agent.movies)
+            st.session_state.eda_summary = summary
+            _save_eda_to_assets(summary, fig)
 
     st.dataframe(st.session_state.eda_summary, use_container_width=True)
-    st.pyplot(st.session_state.eda_plot, clear_figure=False)
+    eda_plot_path = _eda_artifact_paths()["plot"]
+    if eda_plot_path.exists():
+        st.image(str(eda_plot_path), use_container_width=True)
 
 
 def _render_evaluation(agent):
     st.subheader("Evaluation")
-    cases = st.number_input("Cases per mode", min_value=10, max_value=300, value=100, step=10)
+    st.caption("Uses prompts from data/english_test_prompts.json and data/hindi_test_prompts.json.")
+    lang_filter = st.radio(
+        "Prompt Set",
+        ["Hindi+English", "English only"],
+        horizontal=True,
+        index=0,
+    )
+
+    prompt_language = "english_only" if lang_filter == "English only" else "hindi+english"
+    state_key = f"eval::{prompt_language}"
+    paths = _eval_artifact_paths(prompt_language)
+
+    if state_key not in st.session_state:
+        detail, summary = _load_eval_from_assets(prompt_language)
+        if detail is not None and summary is not None:
+            st.session_state[state_key] = (detail, summary)
+        else:
+            detail, summary = run_benchmarks(agent, total_cases=None, prompt_language=prompt_language)
+            summary = summary.copy()
+            if "pass_rate" in summary.columns:
+                summary = summary.rename(columns={"pass_rate": "accuracy_pct"})
+            plot_fig = _benchmark_plot(summary)
+            _save_eval_to_assets(detail, summary, prompt_language, plot_fig)
+            st.session_state[state_key] = (detail, summary)
 
     if st.button("Run Evaluation"):
-        detail, summary = run_benchmarks(agent, total_cases=int(cases))
+        detail, summary = run_benchmarks(agent, total_cases=None, prompt_language=prompt_language)
         summary = summary.copy()
         if "pass_rate" in summary.columns:
             summary = summary.rename(columns={"pass_rate": "accuracy_pct"})
-        st.session_state.eval_detail = detail
-        st.session_state.eval_summary = summary
-        st.session_state.eval_plot = _benchmark_plot(summary)
+        plot_fig = _benchmark_plot(summary)
+        _save_eval_to_assets(detail, summary, prompt_language, plot_fig)
+        st.session_state[state_key] = (detail, summary)
+
+    if state_key in st.session_state:
+        st.session_state.eval_detail, st.session_state.eval_summary = st.session_state[state_key]
+        st.session_state.eval_plot = _benchmark_plot(st.session_state.eval_summary)
 
     if "eval_summary" in st.session_state:
         st.markdown("### Comparison: RAG vs Tool Call vs RAG+Tool Call")
+        s = st.session_state.eval_summary
+        c1, c2, c3, c4, c5 = st.columns(5)
+        c1.metric("Best Accuracy", f"{s['accuracy_pct'].max():.2f}%" if "accuracy_pct" in s else "n/a")
+        c2.metric("Best Precision@K", f"{s['precision_at_k'].max():.2f}%" if "precision_at_k" in s else "n/a")
+        c3.metric("Best MRR", f"{s['mrr'].max():.4f}" if "mrr" in s else "n/a")
+        c4.metric("Lowest Hallucination", f"{s['hallucination_rate'].min():.2f}%" if "hallucination_rate" in s else "n/a")
+        c5.metric("Best Tool Accuracy", f"{s['tool_call_accuracy'].max():.2f}%" if "tool_call_accuracy" in s else "n/a")
         st.dataframe(st.session_state.eval_summary, use_container_width=True)
-        st.pyplot(st.session_state.eval_plot, clear_figure=False)
+        if paths["plot"].exists():
+            st.image(str(paths["plot"]), use_container_width=True)
+        else:
+            st.pyplot(st.session_state.eval_plot, clear_figure=False)
         with st.expander("Detailed Results"):
             st.dataframe(st.session_state.eval_detail, use_container_width=True)
 
 
 def render_dashboard():
-    st.set_page_config(page_title="MovieMate Dashboard", page_icon=":movie_camera:", layout="wide")
+    st.set_page_config(page_title="MovieMate", page_icon="movie_camera", layout="wide")
 
     st.markdown(
         """
         <style>
-        .stApp { background: linear-gradient(135deg, #8481de 0%, #5e8ae0 100%); }
-        .sidebar-card { background:#1d3557;color:#f88aee;border-radius:14px;padding:12px;margin-bottom:12px; }
+        .stApp { background: #020617; color: #f1f5f9; }
+        .sidebar-card { background:#0f172a; color:#94a3b8; border-radius:8px; padding:12px; margin-bottom:12px; border:1px solid #1e293b; font-size:13px; }
+        .logo-block { background:#0f172a; color:#f1f5f9; border-radius:8px; padding:16px; margin-bottom:16px; text-align:center; }
+        .stButton>button { background:#0f172a; border:1px solid #334155; color:#94a3b8; border-radius:6px; transition:0.2s; width: 100%; }
+        .stButton>button:hover { border-color:#38bdf8; color:#38bdf8; background:#0f172a; }
+        div[data-testid="stRadio"] label { color:#94a3b8; }
+        div[data-testid="stRadio"] label[data-baseweb="radio"]:has(input:checked) { background:#1e293b; border:1px solid #38bdf8; border-radius:8px; padding:6px 8px; }
+        .stChatInputContainer { background: #0f172a !important; }
+        div[data-testid="stExpander"] { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
     with st.sidebar:
-        st.markdown("## MovieMate")
-        st.markdown("<div class='sidebar-card'>Navigate views and compare retrieval quality.</div>", unsafe_allow_html=True)
-        view = st.radio("Sidebar Tabs", ["Chat", "EDA", "Evaluation"], index=0)
+        st.markdown("<div class='logo-block'><h1 style='margin:0; letter-spacing:1px;'>MOVIEMATE</h1><div style='font-size:11px; margin-top:8px; color:#64748b; font-weight:600;'>Amit Verma | SE23UCSE020</div></div>", unsafe_allow_html=True)
+        
+        if "active_view" not in st.session_state:
+            st.session_state.active_view = "EDA"
+
+        view = st.radio(
+            "Sections",
+            options=["EDA", "Chat", "Evaluation"],
+            index=["EDA", "Chat", "Evaluation"].index(st.session_state.active_view),
+            horizontal=False,
+        )
+        st.session_state.active_view = view
 
     agent = _ensure_agent()
 
@@ -229,6 +361,8 @@ def launch_dashboard():
                 "true",
                 "--browser.gatherUsageStats",
                 "false",
+                "--server.fileWatcherType",
+                "none",
             ],
             check=False,
         )

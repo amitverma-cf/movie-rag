@@ -1,0 +1,52 @@
+mode,question,expected_answer,latency_ms,rag_hits,tool_hits,merged_hits,passed,precision_at_k,mrr,hallucination_rate,tool_call_accuracy,faithfulness_score,top_title,fail_genre,fail_year,fail_rating,fail_duration,fail_director
+rag,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,286.26,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Action rating >= 5.3 director Peter Facinelli Action movies.,Should return movies matching multiple constraints.,306.59,3,0,3,False,0.0,0.0,1.0,0.0,0.0,The Stunt Man,False,False,False,False,True
+rag,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,307.32,2,0,2,False,0.0,0.0,1.0,0.0,0.0,The King of Comedy,False,False,False,False,True
+rag,Good Comedy movies with rating above 1.8.,Should prioritize Comedy movies with rating >= 1.8.,270.57,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,250.67,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,313.82,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Good Comedy movies with rating above 4.8.,Should prioritize Comedy movies with rating >= 4.8.,267.19,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Good Drama movies with rating above 6.9.,Should prioritize Drama movies with rating >= 6.9.,277.58,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Good Crime movies with rating above 5.9.,Should prioritize Crime movies with rating >= 5.9.,253.44,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Good Biography movies with rating above 8.2.,Should prioritize Biography movies with rating >= 8.2.,303.45,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Highest 2 Lowest,True,False,True,False,False
+rag,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,313.12,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Good Biography movies with rating above 7.7.,Should prioritize Biography movies with rating >= 7.7.,253.34,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Seven Pounds,True,False,True,False,False
+rag,Show Action rating >= 7.3 Action movies.,Should return movies matching multiple constraints.,254.03,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Last Action Hero,False,False,True,False,False
+rag,Show Drama rating >= 4.8 Drama movies.,Should return movies matching multiple constraints.,254.7,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,282.37,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Good Adventure movies with rating above 7.4.,Should prioritize Adventure movies with rating >= 7.4.,259.52,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Cliffhanger,False,False,True,False,False
+rag,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,281.07,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag,Good Comedy movies with rating above 4.9.,Should prioritize Comedy movies with rating >= 4.9.,253.92,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag,Show Action rating >= 6.5 director Laxman Utekar Action movies.,Should return movies matching multiple constraints.,326.16,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Beast,False,False,True,False,True
+rag,2010 के बाद रिलीज़ हुई अच्छी साइ-फाई फिल्में सुझाएं,2010 या बाद की साइ-फाई फिल्में लौटानी चाहिए।,300.67,3,0,3,False,0.0,0.0,1.0,0.0,0.0,2010: The Year We Make Contact,False,True,False,False,False
+rag,2015 के बाद के थ्रिलर जिनकी रेटिंग >= 7 हो खोजिए,"Thriller, year >= 2015, और rating >= 7 वाले परिणाम चाहिए।",352.22,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Drishyam 2,True,False,False,False,False
+rag,अच्छी रेटिंग वाली फैमिली फिल्में दिखाइए (rating >= 6),Family genre और rating >= 6 वाली फिल्में लौटानी चाहिए।,301.06,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Dookudu,True,False,False,False,False
+rag,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,307.83,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Casualties of War,True,False,False,False,False
+rag,2000 के बाद की ऐनिमेशन फिल्में सुझाइए,Animation genre और year >= 2000 वाली फिल्में लौटानी चाहिए।,286.74,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Fantasia 2000,False,True,False,False,False
+rag,IMDb >= 6.5 वाली मिस्ट्री फिल्में दिखाइए,Mystery genre और rating >= 6.5 वाली फिल्में होना चाहिए।,275.21,3,0,3,False,0.0,0.0,1.0,0.0,0.0,6 Souls,False,False,True,False,False
+tool,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,659.05,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+tool,Show Biography rating >= 6.4 Biography movies.,Should return movies matching multiple constraints.,768.18,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+tool,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,845.39,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,785.61,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+tool,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,791.1,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,657.93,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,771.16,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,791.29,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+tool,Show Biography rating >= 6.7 Biography movies.,Should return movies matching multiple constraints.,60418.01,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+tool,किसी भी क्रिस्टोफ़र नोलन द्वारा निर्देशित फिल्में बताइए,ऐसी फिल्में लौटानी चाहिए जिनके निर्देशक में 'Christopher Nolan' हो।,756.08,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,False,False,False,False,True
+tool,120 मिनट से कम अवधि वाली एक्शन फिल्में दिखाइए,duration <= 120 और genre में Action वाली फिल्में लौटानी चाहिए।,797.98,0,3,3,False,0.0,0.0,1.0,0.0,0.0,Attack on Titan: The Last Attack,False,False,False,True,False
+tool,2005 से पहले की कॉमेडी फिल्में सुझाइए,release year <= 2005 और genre में Comedy होनी चाहिए।,994.63,0,3,3,False,0.0,0.0,1.0,0.0,0.0,Mission Muh Dikhayi,False,True,False,False,False
+tool,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,726.82,0,3,3,False,0.0,0.0,1.0,0.0,0.0,20 Days in Mariupol,False,True,False,False,False
+rag+tool,Good Horror movies with rating above 3.9.,Should prioritize Horror movies with rating >= 3.9.,959.38,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag+tool,Show Biography rating >= 6.4 Biography movies.,Should return movies matching multiple constraints.,629.62,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+rag+tool,Show Comedy rating >= 4.7 director Arlene Sanford Comedy movies.,Should return movies matching multiple constraints.,1062.79,2,0,2,False,0.0,0.0,1.0,0.0,0.0,The King of Comedy,False,False,False,False,True
+rag+tool,Show Horror rating >= 4.9 Horror movies.,Should return movies matching multiple constraints.,999.13,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,False
+rag+tool,Show Crime rating >= 6.9 director Wim Wenders Crime movies.,Should return movies matching multiple constraints.,1128.25,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Show Crime rating >= 5.9 director Tom Tykwer Crime movies.,Should return movies matching multiple constraints.,942.41,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Show Comedy rating >= 6.9 director Howard Hawks Comedy movies.,Should return movies matching multiple constraints.,1069.42,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Show Biography rating >= 5.8 director Jon Stewart Biography movies.,Should return movies matching multiple constraints.,1078.71,0,0,0,False,0.0,0.0,1.0,0.0,0.0,,True,False,True,False,True
+rag+tool,Show Biography rating >= 6.7 Biography movies.,Should return movies matching multiple constraints.,773.66,0,3,3,False,0.0,0.0,1.0,0.0,0.0,The Shawshank Redemption,True,False,False,False,False
+rag+tool,2010 के बाद रिलीज़ हुई अच्छी साइ-फाई फिल्में सुझाएं,2010 या बाद की साइ-फाई फिल्में लौटानी चाहिए।,300.56,3,0,3,False,0.0,0.0,1.0,0.0,0.0,2010: The Year We Make Contact,False,True,False,False,False
+rag+tool,2015 के बाद के थ्रिलर जिनकी रेटिंग >= 7 हो खोजिए,"Thriller, year >= 2015, और rating >= 7 वाले परिणाम चाहिए।",386.48,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Drishyam 2,True,False,False,False,False
+rag+tool,1990 से पहले की वॉर फिल्में बताइए,War genre और year <= 1990 वाली फिल्में होनी चाहिए।,254.2,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Casualties of War,True,False,False,False,False
+rag+tool,2000 के बाद की ऐनिमेशन फिल्में सुझाइए,Animation genre और year >= 2000 वाली फिल्में लौटानी चाहिए।,300.34,3,0,3,False,0.0,0.0,1.0,0.0,0.0,Fantasia 2000,False,True,False,False,False

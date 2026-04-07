@@ -33,7 +33,7 @@ class MovieLLM:
         ])
 
         prompt = (
-            f"{self.prompt_template}\n\nHistory:\n{history_text}\n\n"
+            f"History:\n{history_text}\n\n"
             f"Query:\n{query}\n\nRetrieved Movies:\n{context}"
         )
 
@@ -42,7 +42,7 @@ class MovieLLM:
         res = client.chat.completions.create(
             model=self.model_name,
             messages=[
-                {"role": "system", "content": "You are a movie assistant."},
+                {"role": "system", "content": self.prompt_template},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.4,

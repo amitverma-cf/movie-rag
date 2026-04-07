@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
-OUT_PATH = Path(__file__).resolve().parent.parent / "data" / "test+prompts.json"
+OUT_PATH = Path(__file__).resolve().parent.parent / "data" / "english_test_prompts.json"
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "moviemate.db"
 
 
