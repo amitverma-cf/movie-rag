@@ -2,18 +2,18 @@
 
 ![Dashboard cover](assets/dashboard.png)
 
-MovieMate is a retrieval-augmented conversational assistant for exploring movie metadata and getting recommendations. It combines semantic search (embeddings + FAISS) with a structured SQL tool for strict filters, and surfaces grounded responses via a Streamlit dashboard or CLI.
+MovieMate is a conversational movie search and recommendation system that combines semantic search (FAISS + embeddings) with a structured SQL layer for precise filtering. It supports natural language queries like “sci-fi movies after 2010” and intelligently routes them to either semantic retrieval, SQL queries, or both, depending on the query type.
 
 ## Project Contact
 - **Author:** Amit Verma
 - **Roll no.:** SE23UCSE020
 
 ## Key Features
-- Flexible natural-language search over movie metadata using embeddings.
-- Deterministic SQL tool retrieval for strict, field-level constraints (year, director, duration, rating).
-- Hybrid routing (`rag+tool`) that merges semantic and structured evidence, promoting tool results for constraint-heavy queries.
-- Streamlit dashboard with interactive chat, EDA panels, and evaluation/benchmarking tools.
-- Benchmark runner with CSV diagnostics and per-failure tags to speed root-cause analysis.
+- Natural language search over movie data using vector embeddings (FAISS) and microsoft/harrier-oss-v1-270m embedding model.
+- SQL-based retrieval for strict filters like year, rating, duration, and director.
+- Smart routing (`rag+tool`) that selects the best retrieval strategy based on query structure.
+- Interactive Streamlit dashboard with chat, EDA, and evaluation tools.
+- Built-in benchmarking system with detailed failure diagnostics.
 
 ## Project Structure (high level)
 - `src/scrape.py` — data acquisition and enrichment (TMDB helpers).
@@ -32,11 +32,15 @@ MovieMate is a retrieval-augmented conversational assistant for exploring movie 
 1. Create and activate a Python virtual environment (recommended):
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+uv init
+uv venv
+source .venv/bin/activate (Linux) or .\.venv\Scripts\Activate (Powershell)
 ```
 
-2. Install dependencies using your preferred tool (poetry or pip). If using pip, ensure `requirements.txt` exists or use the pyproject-managed installer.
+2. Install dependencies using uv.
+```powershell
+uv sync
+```
 
 3. Place credentials in a `.env` file or environment variables:
 - `LLM_BASE_URL` — base URL for your LLM/embedding API
@@ -177,20 +181,22 @@ Running `--step eval` now exports:
 
 ## Reflection
 
-This reflection focuses on concrete, project-specific findings tied to the code, data, and evaluation artifacts in this repository.
+This project highlights the trade-offs between semantic retrieval (RAG) and structured querying (SQL tools) in real-world systems.
 
-What worked (evidence & pointers)
+The hybrid routing approach performed best overall, but only after fixing retrieval noise, limiting top-k results, and improving tool parsing reliability. findings tied to the code, data, and evaluation artifacts in this repository.
+
+### Summary
 - Hybrid retrieval (semantic + SQL): experiments reported in the Evaluation outputs show `rag+tool` yields the best accuracy for bilingual benchmarks (88.18%) and English-only runs (91.00%).
 - Constraint grounding: the deterministic SQL retriever in `src/tool_call.py` reliably enforces strict filters (year, duration, director), reducing hallucinations in constraint-heavy prompts; failure analysis for these cases lives in `assets/failures_*.csv`.
 - Preprocessing impact: changes in `src/preprocess.py` (genre canonicalization, cast normalization, duration parsing) produced measurable ranking improvements during local experiments — re-run `uv run python -m src.main --step preprocess` before rebuilding embeddings.
 - Indexing and reproducibility: FAISS indices are stored in local data (see `local/data/movies.faiss` and `data/movies.faiss`). Index/model alignment is essential: whenever `src/embed.py` changes the embedding model or tokenizer, rebuild the FAISS index and re-run evaluation.
 
-Where we struggled (concrete limitations)
+### Limitations
 - Sparse plot text: many records lack rich plot summaries, which limited semantic recall for plot-based queries. Adding plot-level text to the table would improve nearest-neighbor matches.
 - Index lifecycle: index rebuilds are slow and currently manual; we need versioned index snapshots plus metadata (embedding model name) to avoid mismatches. See `src/embed.py` for the current build script.
 - Latency & cost: `rag+tool` mode reduces hallucination but increases end-to-end latency (see latency columns in the metrics tables). For deployment, consider caching or async tool calls.
 
-Actionable next steps (code locations included)
+### Future Improvements
 - Add plot-summary embeddings: update `src/preprocess.py` to include `plot` in the embedding text, then update `src/embed.py` to regenerate vectors and `local/data/movies.faiss`.
 - Session personalization: add a short session context buffer in `src/agent.py` and a small weight to bias retrievals toward recent user interactions.
 - Index/version metadata: extend `src/embed.py` to write an index metadata JSON (embedding model, timestamp, dataset hash) next to FAISS files and enforce checks in `src/similarity_search.py`.
