@@ -103,3 +103,67 @@ Next improvements:
 - Expand tool parser intent extraction and query normalization.
 - Add cached model warmup and async retrieval for lower latency.
 - Add richer personalization memory across sessions.
+
+**Evaluation & Reflection**
+
+- **Install `uv` (CLI) and dependencies:**
+
+```bash
+# Option A: install the `uv` CLI if published on PyPI
+pip install uv
+
+# Option B: install all project dependencies
+pip install -r requirements.txt
+```
+
+- **Run all pipeline steps (EDA + Eval) via `main.py`:**
+
+```bash
+# run a specific step (example: embed)
+python -m src.main --step embed
+
+# run the full EDA + evaluation
+python -m src.main --step all
+```
+
+**Quick Benchmark Summary (placeholders)**
+
+| mode     | avg_latency_ms | p95_latency_ms | avg_hits | accuracy_pct |
+|----------|----------------|----------------|----------|--------------|
+| tool     | 35.65          | 47.4           | 12       | 100          |
+| rag      | 232.08         | 305.04         | 8.7      | 40           |
+| rag+tool | 274.61         | 350.85         | 19.4     | 50           |
+
+What this result means:
+
+- `tool` mode is fastest and shows high accuracy on strict constraint queries because SQL/tool calls return exact matches for structured fields.
+- `rag` has higher latency (embedding/vector search + LLM) and lower accuracy on strict constraints because semantic matches don't always satisfy exact metadata conditions.
+- `rag+tool` shows highest latency and increased merged hits but only modest accuracy improvements over `rag`; accuracy falls behind `tool`.
+
+Why accuracy can fall in `rag+tool` mode:
+
+- Merging strategy: naive merging of semantic and tool results can place semantically similar but constraint-violating documents above strict tool matches.
+- Duplication & ranking: duplicates or near-duplicates from both sources can skew the top-k used by the LLM, reducing precision for constraint checks.
+- LLM hallucination risk: mixing noisy RAG context with tool responses may cause the generator to favor fluent but incorrect answers.
+- Latency/timeout pressure: longer end-to-end latency can trigger timeouts or truncated contexts, harming accuracy.
+
+Suggested mitigations:
+
+- Prefer deterministic tool results for strict constraints: when a query contains explicit constraints (year, duration, director), prioritize tool results or require tool evidence in the top-N given to the LLM.
+- Improve merge ranking: use a ranking function that weights constraint matches higher than pure semantic similarity.
+- De-duplicate and normalize metadata before merging (title normalization, exact field comparisons).
+- Validate constraints post-merge and re-rank or filter out results that fail required checks before calling the LLM.
+- Use async retrieval and caching to reduce wall-clock latency for `rag+tool`.
+
+**Placeholders for visuals**
+
+Add images to the `assets/` folder and update links below when available:
+
+- Benchmark summary plot: ![Benchmark summary](assets/benchmark-summary.png)
+- Latency distribution: ![Latency distribution](assets/latency-dist.png)
+- Precision/recall comparison: ![PR curve](assets/pr-curve.png)
+
+If you'd like, I can:
+
+- Run the full benchmark now and attach the generated summary and plots to `assets/`.
+- Add automated plotting code to `src/evaluation.py` to produce the above PNGs.
