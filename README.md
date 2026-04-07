@@ -1,79 +1,120 @@
-# MovieMate: RAG + SQL Tool Movie Assistant
+# MovieMate — Conversational Movie Search & Recommendations
 
-MovieMate combines semantic retrieval (FAISS) with structured retrieval (SQLite tool-calling), then generates grounded responses in a Streamlit app.
+![Dashboard cover](assets/dashboard.png)
 
-## Features
-- RAG search over movie embeddings
-- SQL tool retrieval for strict constraints
-- Hybrid retrieval (`rag+tool`) with strict routing
-- Streamlit dashboard with Chat, EDA, and Evaluation
-- Benchmark runner with CSV diagnostics export
+MovieMate is a retrieval-augmented conversational assistant for exploring movie metadata and getting recommendations. It combines semantic search (embeddings + FAISS) with a structured SQL tool for strict filters, and surfaces grounded responses via a Streamlit dashboard or CLI.
 
-## Project Structure
-- `src/scrape.py`: data scraping + enrichment
-- `src/preprocess.py`: metadata cleanup (trailers, keywords)
-- `src/embed.py`: embedding + FAISS index build/update
-- `src/similarity_search.py`: vector retrieval
-- `src/tool_call.py`: SQL tool retrieval
-- `src/agent.py`: retrieval orchestration + answer pipeline
-- `src/evaluation.py`: benchmark and metrics
-- `src/eda.py`: EDA summary + plots
-- `src/dashboard.py`: Streamlit UI
-- `src/main.py`: CLI entrypoint
+## Project Contact
+- **Author:** Amit Verma
+- **Roll no.:** SE23UCSE020
 
-## Setup
-```bash
-uv sync
+## Key Features
+- Flexible natural-language search over movie metadata using embeddings.
+- Deterministic SQL tool retrieval for strict, field-level constraints (year, director, duration, rating).
+- Hybrid routing (`rag+tool`) that merges semantic and structured evidence, promoting tool results for constraint-heavy queries.
+- Streamlit dashboard with interactive chat, EDA panels, and evaluation/benchmarking tools.
+- Benchmark runner with CSV diagnostics and per-failure tags to speed root-cause analysis.
+
+## Project Structure (high level)
+- `src/scrape.py` — data acquisition and enrichment (TMDB helpers).
+- `src/preprocess.py` — metadata cleaning and normalization steps applied before embedding.
+- `src/embed.py` — embedding generation and FAISS index build/update.
+- `src/similarity_search.py` — vector retrieval helpers and ranking utilities.
+- `src/tool_call.py` — SQL-based retriever and deterministic lookup interface.
+- `src/agent.py` — retrieval orchestration, merge/re-rank logic, and prompt assembly for the LLM.
+- `src/llm.py` — LLM client and prompt templates.
+- `src/evaluation.py` — benchmark runner, metrics (precision@k, MRR, hallucination), and CSV diagnostics.
+- `src/eda.py` — exploratory data analysis and plotting utilities used by the dashboard.
+- `src/dashboard.py` — Streamlit app wiring chat UI, EDA view, and evaluation runner.
+- `src/main.py` — CLI entrypoint exposing reproducible pipeline steps.
+
+## Setup (quick)
+1. Create and activate a Python virtual environment (recommended):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
-Add environment values in `.env` (as needed):
-- `LLM_BASE_URL`
-- `LLM_API_KEY`
-- `LLM_MODEL_NAME`
-- `TMDB_API_KEY`
+2. Install dependencies using your preferred tool (poetry or pip). If using pip, ensure `requirements.txt` exists or use the pyproject-managed installer.
 
-## Run Commands
+3. Place credentials in a `.env` file or environment variables:
+- `LLM_BASE_URL` — base URL for your LLM/embedding API
+- `LLM_API_KEY` — API key for LLM/embedding service
+- `LLM_MODEL_NAME` — model identifier used by `src/llm.py`
+- `TMDB_API_KEY` — optional TMDB key for `src/scrape.py`
 
-### Dashboard
-```bash
+## Common commands
+
+Start the Streamlit dashboard (chat, EDA, evaluation):
+
+```powershell
 uv run moviemate
 # or
 uv run python -m src.main --step dashboard
 ```
 
-### Scraping
-```bash
+Scrape movie metadata (TMDB key required):
+
+```powershell
 uv run python -m src.main --step scrape --tmdb_api_key YOUR_TMDB_KEY
 ```
 
-### Preprocess
-```bash
+Preprocess and normalize metadata:
+
+```powershell
 uv run python -m src.main --step preprocess
 ```
 
-### Embedding / FAISS
-```bash
+Build or update embeddings and FAISS index:
+
+```powershell
 uv run python -m src.main --step embed
 ```
 
-### EDA
-```bash
+Run EDA to regenerate plots and statistics:
+
+```powershell
 uv run python -m src.main --step eda
 ```
 
-### Similarity Search (CLI)
-```bash
+Quick similarity-search CLI test:
+
+```powershell
 uv run python -m src.main --step search --query "sci-fi movies after 2010"
 ```
 
-### Agent Run (Hybrid)
-```bash
+Run the agent pipeline (hybrid RAG + tool):
+
+```powershell
 uv run python -m src.main --step agent --query "drama movies directed by Nolan"
+```
+
+Run evaluation benchmarks and export diagnostics:
+
+```powershell
+uv run python -m src.main --step eval
 ```
 
 ## EDA Plot
 
 ![EDA Plot](assets/eda.png)
+
+## EDA Statistics
+
+Summary of key numeric features (computed from the movie table):
+
+| rows  | rating  | year       | duration   |
+|------:|--------:|-----------:|-----------:|
+| count | 12325   | 12325      | 12325      |
+| mean  | 6.5838  | 2003.2166  | 110.3784   |
+| std   | 1.0138  | 18.9489    | 22.9102    |
+| min   | 1       | 1915       | 45         |
+| 25%   | 6       | 1995       | 95         |
+| 50%   | 6.7     | 2008       | 106        |
+| 75%   | 7.3     | 2017       | 120        |
+| max   | 9.3     | 2026       | 566        |
+
 
 
 ### Evaluation
@@ -135,10 +176,27 @@ Running `--step eval` now exports:
 ![English-only Benchmark Plot](assets/benchmark_plot_english_only.png)
 
 ## Reflection
-- The major evaluation bug was fixed: pass/fail now checks **any hit in merged results**, not only rank-1.
-- Hybrid mode (`rag+tool`) is much faster than pure RAG while preserving strong precision.
-- Tool mode is still best for strict constraints and lowest latency.
-- Failure diagnostics are now explicit (`fail_genre`, `fail_year`, `fail_rating`, `fail_duration`, `fail_director`) in benchmark detail outputs for faster debugging.
+
+This reflection focuses on concrete, project-specific findings tied to the code, data, and evaluation artifacts in this repository.
+
+What worked (evidence & pointers)
+- Hybrid retrieval (semantic + SQL): experiments reported in the Evaluation outputs show `rag+tool` yields the best accuracy for bilingual benchmarks (88.18%) and English-only runs (91.00%). See `assets/benchmark_summary_hindi_english.csv` and `assets/benchmark_summary_english_only.csv` for the full breakdown.
+- Constraint grounding: the deterministic SQL retriever in `src/tool_call.py` reliably enforces strict filters (year, duration, director), reducing hallucinations in constraint-heavy prompts; failure analysis for these cases lives in `assets/failures_*.csv`.
+- Preprocessing impact: changes in `src/preprocess.py` (genre canonicalization, cast normalization, duration parsing) produced measurable ranking improvements during local experiments — re-run `uv run python -m src.main --step preprocess` before rebuilding embeddings.
+- Indexing and reproducibility: FAISS indices are stored in local data (see `local/data/movies.faiss` and `data/movies.faiss`). Index/model alignment is essential: whenever `src/embed.py` changes the embedding model or tokenizer, rebuild the FAISS index and re-run evaluation.
+
+Where we struggled (concrete limitations)
+- Sparse plot text: many records lack rich plot summaries, which limited semantic recall for plot-based queries. Adding plot-level text to the table would improve nearest-neighbor matches.
+- Index lifecycle: index rebuilds are slow and currently manual; we need versioned index snapshots plus metadata (embedding model name) to avoid mismatches. See `src/embed.py` for the current build script.
+- Latency & cost: `rag+tool` mode reduces hallucination but increases end-to-end latency (see latency columns in the metrics tables). For deployment, consider caching or async tool calls.
+
+Actionable next steps (code locations included)
+- Add plot-summary embeddings: update `src/preprocess.py` to include `plot` in the embedding text, then update `src/embed.py` to regenerate vectors and `local/data/movies.faiss`.
+- Session personalization: add a short session context buffer in `src/agent.py` and a small weight to bias retrievals toward recent user interactions.
+- Index/version metadata: extend `src/embed.py` to write an index metadata JSON (embedding model, timestamp, dataset hash) next to FAISS files and enforce checks in `src/similarity_search.py`.
+- Human evaluation: curate a small set of ambiguous queries from `data/english_test_prompts.json` and `data/hindi_test_prompts.json` for human rating; store results under `assets/` for longitudinal analysis.
+
+If you want, I can implement the index metadata change and add a short script to regenerate indexes with a single command.
 
 ## Notes
 - If dashboard starts in browser directly, use `uv run moviemate`.

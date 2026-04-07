@@ -1,0 +1,145 @@
+user_message,assistant_text,cards_html
+mahesh babu movie,"• Maharshi (2019), rating=7.1, genre=Action,Drama
+• Business Man (2012), rating=7.2, genre=Action,Crime,Drama
+• Dookudu (2011), rating=7.4, genre=Action,Comedy,Drama","<div style='margin-top:20px;'><div style='display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;'><div>
+<div style='
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:12px;
+    color:#f1f5f9;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+'>
+    <div style='
+        display:flex;
+        flex-direction:row;
+        gap:16px;
+    '>
+        <div style=""height:240px; aspect-ratio: 3/4; overflow:hidden; border-radius:8px;"">
+            <img src='https://image.tmdb.org/t/p/w500/pV6xLQh54ga8oaQqJtUqLp12LwQ.jpg' style='aspect-ratio: 3/4;height:240px;object-fit:cover;border-radius:8px;'>
+        </div>
+        <div style=""height:240px; aspect-ratio: 4/3; border-radius:8px; overflow:hidden;"">
+            <iframe src='https://www.youtube.com/embed/ByjXIbg4hjw' style='aspect-ratio: 4/3;height:240px;border-radius:8px;border:none;' allowfullscreen></iframe>
+        </div>
+    </div>
+    <div style='
+        border-top:1px solid #1e293b;
+        padding-top:10px;
+    '>
+        <h4 style='
+            margin:0 0 6px 0;
+            font-size:16px;
+            color:#f8fafc;
+        '>
+            Maharshi (2019)
+        </h4>
+        <div style='
+            font-size:12px;
+            color:#94a3b8;
+            line-height:1.5;
+        '>
+            <b>Rating:</b> 7.1 &nbsp; | &nbsp;
+            <b>Genre:</b> Action,Drama<br>
+            <b>Director:</b> Vamshi Paidipally<br>
+            <b>Cast:</b> Mahesh Babu, Pooja Hegde, Allari Naresh, Jagapati Babu  <br>
+            <p style='margin-top:8px;'>Rishi Kumar is a billionaire and the CEO of Origins, someone who has always strived for the success he now owns. His friend Ravi needs help, how will he come through?</p>
+        </div>
+    </div>
+</div>
+</div><div>
+<div style='
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:12px;
+    color:#f1f5f9;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+'>
+    <div style='
+        display:flex;
+        flex-direction:row;
+        gap:16px;
+    '>
+        <div style=""height:240px; aspect-ratio: 3/4; overflow:hidden; border-radius:8px;"">
+            <img src='https://image.tmdb.org/t/p/w500/hLF5o53irg0ZVV4ecLptkLgiTXq.jpg' style='aspect-ratio: 3/4;height:240px;object-fit:cover;border-radius:8px;'>
+        </div>
+        <div style=""height:240px; aspect-ratio: 4/3; border-radius:8px; overflow:hidden;"">
+            <iframe src='https://www.youtube.com/embed/xo_ZUn99wQ4' style='aspect-ratio: 4/3;height:240px;border-radius:8px;border:none;' allowfullscreen></iframe>
+        </div>
+    </div>
+    <div style='
+        border-top:1px solid #1e293b;
+        padding-top:10px;
+    '>
+        <h4 style='
+            margin:0 0 6px 0;
+            font-size:16px;
+            color:#f8fafc;
+        '>
+            Business Man (2012)
+        </h4>
+        <div style='
+            font-size:12px;
+            color:#94a3b8;
+            line-height:1.5;
+        '>
+            <b>Rating:</b> 7.2 &nbsp; | &nbsp;
+            <b>Genre:</b> Action,Crime,Drama<br>
+            <b>Director:</b> Puri Jagannadh<br>
+            <b>Cast:</b> Mahesh Babu, Kajal Aggarwal, Prakash Raj, Sayaji Shinde  <br>
+            <p style='margin-top:8px;'>Just as the cops have declared the end of Mafia in Mumbai, a man named Surya arrives in the city with the intentions of conquering it.</p>
+        </div>
+    </div>
+</div>
+</div></div><div style='display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;'><div>
+<div style='
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:12px;
+    color:#f1f5f9;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+'>
+    <div style='
+        display:flex;
+        flex-direction:row;
+        gap:16px;
+    '>
+        <div style=""height:240px; aspect-ratio: 3/4; overflow:hidden; border-radius:8px;"">
+            <img src='https://image.tmdb.org/t/p/w500/e9uffrN9z22uuiBF9B0bTDDvbjz.jpg' style='aspect-ratio: 3/4;height:240px;object-fit:cover;border-radius:8px;'>
+        </div>
+        <div style=""height:240px; aspect-ratio: 4/3; border-radius:8px; overflow:hidden;"">
+            <iframe src='https://www.youtube.com/embed/R15hfyOQ_GE' style='aspect-ratio: 4/3;height:240px;border-radius:8px;border:none;' allowfullscreen></iframe>
+        </div>
+    </div>
+    <div style='
+        border-top:1px solid #1e293b;
+        padding-top:10px;
+    '>
+        <h4 style='
+            margin:0 0 6px 0;
+            font-size:16px;
+            color:#f8fafc;
+        '>
+            Dookudu (2011)
+        </h4>
+        <div style='
+            font-size:12px;
+            color:#94a3b8;
+            line-height:1.5;
+        '>
+            <b>Rating:</b> 7.4 &nbsp; | &nbsp;
+            <b>Genre:</b> Action,Comedy,Drama<br>
+            <b>Director:</b> Sreenu Vaitla<br>
+            <b>Cast:</b> Mahesh Babu, Samantha Ruth Prabhu, Prakash Raj, Sonu Sood  <br>
+            <p style='margin-top:8px;'>To protect his father recovering from a coma, a relentless cop must pose as the political leader his father always envisioned while hunting the men who tried to kill him.</p>
+        </div>
+    </div>
+</div>
+</div><div></div></div></div>"

@@ -15,6 +15,90 @@ from src.evaluation import run_benchmarks
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 
 
+def _chat_artifact_paths():
+    return {
+        "history": ASSETS_DIR / "chat_history.csv",
+        "suggestions": ASSETS_DIR / "chat_suggestions.csv",
+    }
+
+
+def _load_chat_history_from_assets():
+    path = _chat_artifact_paths()["history"]
+    if not path.exists():
+        return []
+    df = pd.read_csv(path, keep_default_na=False)
+    history = []
+    for _, row in df.iterrows():
+        history.append(
+            (
+                str(row.get("user_message", "")),
+                {
+                    "text": str(row.get("assistant_text", "")),
+                    "cards_html": str(row.get("cards_html", "")),
+                },
+            )
+        )
+    return history
+
+
+def _save_chat_history_to_assets(chat_history):
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for user_msg, bot_msg in chat_history:
+        if isinstance(bot_msg, dict):
+            assistant_text = str(bot_msg.get("text", ""))
+            cards_html = str(bot_msg.get("cards_html", ""))
+        else:
+            assistant_text = str(bot_msg)
+            cards_html = ""
+        rows.append(
+            {
+                "user_message": str(user_msg),
+                "assistant_text": assistant_text,
+                "cards_html": cards_html,
+            }
+        )
+    pd.DataFrame(rows).to_csv(_chat_artifact_paths()["history"], index=False)
+
+
+def _load_suggestions_from_assets():
+    path = _chat_artifact_paths()["suggestions"]
+    if not path.exists():
+        return pd.DataFrame()
+    return pd.read_csv(path, keep_default_na=False)
+
+
+def _save_suggestions_to_assets(df):
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    out = df.copy() if df is not None else pd.DataFrame()
+    out.to_csv(_chat_artifact_paths()["suggestions"], index=False)
+
+
+def _clear_chat_artifacts():
+    for path in _chat_artifact_paths().values():
+        if path.exists():
+            path.unlink()
+
+
+def _compact_agent_history(chat_history):
+    compact = []
+    for user_msg, bot_msg in chat_history:
+        if isinstance(bot_msg, dict):
+            compact.append((user_msg, str(bot_msg.get("text", ""))))
+        else:
+            compact.append((user_msg, str(bot_msg)))
+    return compact
+
+
+def _suggestions_from_history(agent, chat_history, k=6):
+    user_queries = [str(u).strip() for u, _ in chat_history if str(u).strip()]
+    if not user_queries:
+        return pd.DataFrame()
+    query = " ".join(user_queries[-6:])
+    _, _, merged = agent._retrieve(query, mode="rag+tool", k=int(k))
+    return merged.head(int(k)).reset_index(drop=True)
+
+
 def _youtube_embed_url(url):
     if not url:
         return ""
@@ -34,34 +118,68 @@ def _movie_card(row):
     rating = html.escape(str(row.get("rating", "NA")))
     genre = html.escape(str(row.get("genre", "NA")))
     director = html.escape(str(row.get("director", "NA")))
-    source = html.escape(str(row.get("source", "N/A")))
+    cast = html.escape(str(row.get("cast", "NA")))
+    description = html.escape(str(row.get("description", "No description available.")))
     poster_url = str(row.get("poster_url", "") or "").strip()
     trailer_url = str(row.get("trailer_url", "") or "").strip()
     embed = _youtube_embed_url(trailer_url)
 
     poster_html = (
-        f"<img src='{html.escape(poster_url)}' style='width:100%;height:240px;object-fit:cover;border-radius:8px;'>"
+        f"<img src='{html.escape(poster_url)}' style='aspect-ratio: 3/4;height:240px;object-fit:cover;border-radius:8px;'>"
         if poster_url else "<div style='width:100%;height:240px;background:#1e293b;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748b;'>No Poster</div>"
     )
     
     trailer_html = (
-        f"<div style='margin-top:10px;font-size:12px;color:#94a3b8;'>Trailer</div>"
-        f"<iframe src='{html.escape(embed)}' style='width:100%;height:180px;border-radius:8px;border:none;margin-top:6px;' allowfullscreen></iframe>"
+        f"<iframe src='{html.escape(embed)}' style='aspect-ratio: 4/3;height:240px;border-radius:8px;border:none;' allowfullscreen></iframe>"
         if embed else f"<div style='margin-top:10px;text-align:center;'><a href='{html.escape(trailer_url)}' target='_blank' style='color:#38bdf8;text-decoration:none;font-size:13px;'>View Trailer</a></div>" if trailer_url else ""
     )
 
     return f"""
-<div style='background:#0f172a; border:1px solid #334155; border-radius:12px; padding:12px; height:100%; color:#f1f5f9;'>
-    {poster_html}
-    <div style='margin-top:10px;'>
-        <h4 style='margin:0 0 4px 0; font-size:16px; color:#f8fafc;'>{title} ({year})</h4>
-        <div style='font-size:12px; color:#94a3b8; line-height:1.4;'>
-            <b>Rating:</b> {rating} | <b>Genre:</b> {genre}<br>
-            <b>Director:</b> {director}<br>
-            <span style='font-size:10px; color:#475569;'>Source: {source}</span>
+<div style='
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:12px;
+    color:#f1f5f9;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+'>
+    <div style='
+        display:flex;
+        flex-direction:row;
+        gap:16px;
+    '>
+        <div style="height:240px; aspect-ratio: 3/4; overflow:hidden; border-radius:8px;">
+            {poster_html}
+        </div>
+        <div style="height:240px; aspect-ratio: 4/3; border-radius:8px; overflow:hidden;">
+            {trailer_html}
         </div>
     </div>
-    {trailer_html}
+    <div style='
+        border-top:1px solid #1e293b;
+        padding-top:10px;
+    '>
+        <h4 style='
+            margin:0 0 6px 0;
+            font-size:16px;
+            color:#f8fafc;
+        '>
+            {title} ({year})
+        </h4>
+        <div style='
+            font-size:12px;
+            color:#94a3b8;
+            line-height:1.5;
+        '>
+            <b>Rating:</b> {rating} &nbsp; | &nbsp;
+            <b>Genre:</b> {genre}<br>
+            <b>Director:</b> {director}<br>
+            <b>Cast:</b> {cast}  <br>
+            <p style='margin-top:8px;'>{description}</p>
+        </div>
+    </div>
 </div>
 """
 
@@ -184,29 +302,68 @@ def _ensure_agent():
 
 def _render_chat(agent):
     st.subheader("Chat")
-    mode = st.radio("Retrieval Mode", ["rag", "tool", "rag+tool"], horizontal=True, index=2)
+    mode_col, clear_col = st.columns([5, 1])
+    with mode_col:
+        mode = st.radio("", ["rag", "tool", "rag+tool"], horizontal=True, index=2)
+    with clear_col:
+        if st.button("Clear History", use_container_width=True):
+            st.session_state.chat_history = []
+            st.session_state.chat_suggestions = pd.DataFrame()
+            _clear_chat_artifacts()
+            st.rerun()
 
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
+        st.session_state.chat_history = _load_chat_history_from_assets()
+    if "chat_suggestions" not in st.session_state:
+        st.session_state.chat_suggestions = _load_suggestions_from_assets()
+        if st.session_state.chat_suggestions.empty and st.session_state.chat_history:
+            st.session_state.chat_suggestions = _suggestions_from_history(agent, st.session_state.chat_history)
+            _save_suggestions_to_assets(st.session_state.chat_suggestions)
     if "last_metrics" not in st.session_state:
         st.session_state.last_metrics = {}
+
+    if not st.session_state.chat_suggestions.empty:
+        st.markdown("### Suggested For You")
+        st.markdown(_cards_html(st.session_state.chat_suggestions), unsafe_allow_html=True)
 
     for user_msg, bot_msg in st.session_state.chat_history:
         with st.chat_message("user"):
             st.markdown(user_msg)
         with st.chat_message("assistant"):
-            st.markdown(bot_msg)
+            if isinstance(bot_msg, dict):
+                st.markdown(str(bot_msg.get("text", "")))
+                cards_html = str(bot_msg.get("cards_html", "") or "").strip()
+                if cards_html:
+                    st.markdown(cards_html, unsafe_allow_html=True)
+            else:
+                bot_text = str(bot_msg)
+                split_token = "\n\n<div style='margin-top:20px;'"
+                if split_token in bot_text:
+                    text_part, html_part = bot_text.split(split_token, 1)
+                    st.markdown(text_part)
+                    st.markdown("<div style='margin-top:20px;'" + html_part, unsafe_allow_html=True)
+                else:
+                    st.markdown(bot_text)
 
     prompt = st.chat_input("Message MovieMate")
     if prompt:
-        result = agent.run(prompt, mode=mode, history=st.session_state.chat_history)
+        result = agent.run(prompt, mode=mode, history=_compact_agent_history(st.session_state.chat_history))
         
         # Merge text and cards into one assistant bubble
         full_response = result["answer"]
         cards_html = _cards_html(result["movies"])
-        combined_html = f"{full_response}\n\n{cards_html}"
-        
-        st.session_state.chat_history.append((prompt, combined_html))
+        st.session_state.chat_history.append(
+            (
+                prompt,
+                {
+                    "text": full_response,
+                    "cards_html": cards_html,
+                },
+            )
+        )
+        _save_chat_history_to_assets(st.session_state.chat_history)
+        st.session_state.chat_suggestions = _suggestions_from_history(agent, st.session_state.chat_history)
+        _save_suggestions_to_assets(st.session_state.chat_suggestions)
         st.session_state.last_metrics = {
             "mode": mode,
             "rag_hits": result.get("rag_count", 0),
